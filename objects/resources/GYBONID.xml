@@ -1,0 +1,1254 @@
+<resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:apti="http://midpoint.evolveum.com/xml/ns/public/common/api-types-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="aa35936d-fe06-4f3c-8af7-df5f3f332c3e" version="18">
+      <name>GYBONID</name>
+      <metadata>
+         <modifyTimestamp>2018-01-26T07:16:17.612-08:00</modifyTimestamp>
+         <modifierRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+         <modifyChannel>http://midpoint.evolveum.com/xml/ns/public/gui/channels-3#user</modifyChannel>
+      </metadata>
+      <operationExecution id="3">
+         <timestamp>2018-01-22T04:01:16.119-08:00</timestamp>
+         <operation>
+            <objectDelta>
+               <t:changeType>modify</t:changeType>
+               <t:objectType>c:ResourceType</t:objectType>
+            </objectDelta>
+            <executionResult>
+               <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+               <status>success</status>
+               <token>1000000000000000266</token>
+            </executionResult>
+            <objectName>GYBONID</objectName>
+         </operation>
+         <status>success</status>
+         <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+         <channel>http://midpoint.evolveum.com/xml/ns/public/gui/channels-3#user</channel>
+      </operationExecution>
+      <operationExecution id="4">
+         <timestamp>2018-01-22T04:02:14.293-08:00</timestamp>
+         <operation>
+            <objectDelta>
+               <t:changeType>modify</t:changeType>
+               <t:objectType>c:ResourceType</t:objectType>
+            </objectDelta>
+            <executionResult>
+               <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+               <status>success</status>
+               <token>1000000000000000334</token>
+            </executionResult>
+            <objectName>GYBONID</objectName>
+         </operation>
+         <status>success</status>
+         <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+         <channel>http://midpoint.evolveum.com/xml/ns/public/gui/channels-3#user</channel>
+      </operationExecution>
+      <operationExecution id="5">
+         <timestamp>2018-01-26T07:06:30.130-08:00</timestamp>
+         <operation>
+            <objectDelta>
+               <t:changeType>modify</t:changeType>
+               <t:objectType>c:ResourceType</t:objectType>
+            </objectDelta>
+            <executionResult>
+               <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+               <status>success</status>
+               <token>1000000000000013122</token>
+            </executionResult>
+            <objectName>GYBONID</objectName>
+         </operation>
+         <status>success</status>
+         <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+         <channel>http://midpoint.evolveum.com/xml/ns/public/gui/channels-3#user</channel>
+      </operationExecution>
+      <operationExecution id="1">
+         <timestamp>2018-01-26T07:10:04.062-08:00</timestamp>
+         <operation>
+            <objectDelta>
+               <t:changeType>modify</t:changeType>
+               <t:objectType>c:ResourceType</t:objectType>
+            </objectDelta>
+            <executionResult>
+               <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+               <status>success</status>
+               <token>1000000000000013294</token>
+            </executionResult>
+            <objectName>GYBONID</objectName>
+         </operation>
+         <status>success</status>
+         <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+         <channel>http://midpoint.evolveum.com/xml/ns/public/gui/channels-3#user</channel>
+      </operationExecution>
+      <operationExecution id="2">
+         <timestamp>2018-01-26T07:16:17.728-08:00</timestamp>
+         <operation>
+            <objectDelta>
+               <t:changeType>modify</t:changeType>
+               <t:objectType>c:ResourceType</t:objectType>
+            </objectDelta>
+            <executionResult>
+               <operation>com.evolveum.midpoint.model.impl.lens.ChangeExecutor.executeDelta</operation>
+               <status>success</status>
+               <token>1000000000000013826</token>
+            </executionResult>
+            <objectName>GYBONID</objectName>
+         </operation>
+         <status>success</status>
+         <initiatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+         <channel>http://midpoint.evolveum.com/xml/ns/public/gui/channels-3#user</channel>
+      </operationExecution>
+      <operationalState>
+         <lastAvailabilityStatus>up</lastAvailabilityStatus>
+      </operationalState>
+      <connectorRef oid="4f57b99b-603f-4767-b485-df57ae93b147" relation="org:default" type="c:ConnectorType"/>
+      <connectorConfiguration xmlns:icfc="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3">
+         <icfc:configurationProperties xmlns:gen351="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-databasetable/org.identityconnectors.databasetable.DatabaseTableConnector">
+            <gen351:host><expression><const>resourceGYBONIDhost</const></expression></gen351:host>
+            <gen351:port><expression><const>resourceGYBONIDport</const></expression></gen351:port>
+            <gen351:user><expression><const>resourceGYBONIDuser</const></expression></gen351:user>
+            <gen351:password><expression><const>resourceGYBONIDpassword</const></expression></gen351:password>
+            <gen351:database><expression><const>resourceGYBONIDdatabase</const></expression></gen351:database>
+            <gen351:table>GYBONID</gen351:table>
+            <gen351:keyColumn>GYBONID_PIDM</gen351:keyColumn>
+            <gen351:changeLogColumn>GYBONID_ACTIVITY_DATE</gen351:changeLogColumn>
+            <gen351:jdbcDriver>oracle.jdbc.driver.OracleDriver</gen351:jdbcDriver>
+            <gen351:jdbcUrlTemplate><expression><const>resourceGYBONIDjdbcurltemplate</const></expression></gen351:jdbcUrlTemplate>
+         </icfc:configurationProperties>
+      </connectorConfiguration>
+      <schema>
+         <cachingMetadata>
+            <retrievalTimestamp>2018-01-26T07:10:04.939-08:00</retrievalTimestamp>
+            <serialNumber>63afe9692507c5d8-e2746ef73705d60b</serialNumber>
+         </cachingMetadata>
+         <definition>
+            <xsd:schema xmlns:a="http://prism.evolveum.com/xml/ns/public/annotation-3" xmlns:ra="http://midpoint.evolveum.com/xml/ns/public/resource/annotation-3" xmlns:tns="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">
+               <xsd:import namespace="http://prism.evolveum.com/xml/ns/public/annotation-3"/>
+               <xsd:import namespace="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"/>
+               <xsd:import namespace="http://midpoint.evolveum.com/xml/ns/public/resource/annotation-3"/>
+               <xsd:complexType name="AccountObjectClass">
+                  <xsd:annotation>
+                     <xsd:appinfo>
+                        <ra:resourceObject/>
+                        <ra:identifier>icfs:uid</ra:identifier>
+                        <ra:secondaryIdentifier>icfs:name</ra:secondaryIdentifier>
+                        <ra:displayNameAttribute>icfs:name</ra:displayNameAttribute>
+                        <ra:namingAttribute>icfs:name</ra:namingAttribute>
+                        <ra:nativeObjectClass>__ACCOUNT__</ra:nativeObjectClass>
+                        <ra:kind>account</ra:kind>
+                        <ra:default>true</ra:default>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+                  <xsd:sequence>
+                     <xsd:element minOccurs="0" name="GYBONID_CURR_USER_IND_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>120</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_CURR_USER_IND_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_LOGIN_NAME" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>130</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_LOGIN_NAME</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ALT_INSTRUCTOR_END" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>140</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ALT_INSTRUCTOR_END</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_TITLE_DESC" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>150</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_TITLE_DESC</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_AFFILIATION_CODE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>160</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_AFFILIATION_CODE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_CONFID_IND_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>170</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_CONFID_IND_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_PIDM_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>180</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_PIDM_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_GID" type="xsd:decimal">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>190</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_GID</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ALT_INSTRUCTOR_START" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>200</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ALT_INSTRUCTOR_START</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_EMPLOYEE_CLASS_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>210</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_EMPLOYEE_CLASS_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_CURR_STU_IND_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>220</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_CURR_STU_IND_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_TITLE_DESC_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>230</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_TITLE_DESC_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_LAST_NAME" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>240</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_LAST_NAME</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_OSU_ID" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>250</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_OSU_ID</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_CURR_EMPL_IND_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>260</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_CURR_EMPL_IND_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_AFFILIATION_END_TERM" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>270</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_AFFILIATION_END_TERM</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ALT_PHONE_NUMBER" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>280</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ALT_PHONE_NUMBER</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_REGISTERED_TERM" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>290</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_REGISTERED_TERM</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ADMITTED_TERM" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>300</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ADMITTED_TERM</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ONID_CURRENT_USER" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>310</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ONID_CURRENT_USER</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_OFFICE_ADDRESS" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>320</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_OFFICE_ADDRESS</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_CURRENT_ONID_LITE_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>330</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_CURRENT_ONID_LITE_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ALT_INSTRUCTOR_TERM" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>340</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ALT_INSTRUCTOR_TERM</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ALTERNATE_START_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>350</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ALTERNATE_START_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ALT_PHONE_NUM_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>360</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ALT_PHONE_NUM_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_AFFIL_VERIFIED_TERM" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>370</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_AFFIL_VERIFIED_TERM</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_NIST_LVL" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>380</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_NIST_LVL</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_HOME_PHONE_NUMBER" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>390</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_HOME_PHONE_NUMBER</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_INSTRUCTOR_TERM" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>400</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_INSTRUCTOR_TERM</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_FAX_NUM_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>410</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_FAX_NUM_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_MI_NAME_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>420</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_MI_NAME_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_AFFILIATION_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>430</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_AFFILIATION_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_HOME_PHONE_NUM_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>440</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_HOME_PHONE_NUM_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_PROX_CSN" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>450</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_PROX_CSN</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element ref="icfs:name">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayName>ConnId Name</a:displayName>
+                              <a:displayOrder>110</a:displayOrder>
+                              <ra:frameworkAttributeName>__NAME__</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_TERMINATION_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>460</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_TERMINATION_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_HOME_ADDRESS_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>470</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_HOME_ADDRESS_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ACTIVITY_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>480</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ACTIVITY_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_DATE_TO_DEACTIVATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>490</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_DATE_TO_DEACTIVATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_CONFID_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>500</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_CONFID_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_DO_NOT_PUBLISH_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>510</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_DO_NOT_PUBLISH_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_GCOS" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>520</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_GCOS</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_WEB_PAGE_ADDR_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>530</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_WEB_PAGE_ADDR_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_FAX_NUMBER" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>540</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_FAX_NUMBER</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_DO_NOT_PUBLISH_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>550</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_DO_NOT_PUBLISH_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_PROX_CSN_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>560</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_PROX_CSN_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ADMITTED_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>570</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ADMITTED_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_CURRENT_RETIREE_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>580</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_CURRENT_RETIREE_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_DEAD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>590</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_DEAD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_AFFIL_VERIFIED_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>600</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_AFFIL_VERIFIED_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_BIRTH_DATE_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>610</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_BIRTH_DATE_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_DUAL_ADMIT_TERM" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>620</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_DUAL_ADMIT_TERM</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_DEACTIVATED_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>630</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_DEACTIVATED_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_OSU_ID_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>640</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_OSU_ID_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_HOME_ADDRESS" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>650</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_HOME_ADDRESS</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_OFFICE_ADDRESS_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>660</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_OFFICE_ADDRESS_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_UID" type="xsd:decimal">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>670</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_UID</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_WARNING_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>680</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_WARNING_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_FIRST_NAME" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>690</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_FIRST_NAME</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_EMPLOYMENT_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>700</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_EMPLOYMENT_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ACTIVATED_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>710</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ACTIVATED_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_NIST_LVL_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>720</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_NIST_LVL_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_SHELL" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>730</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_SHELL</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_FIRST_NAME_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>740</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_FIRST_NAME_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_OSUUID" type="xsd:decimal">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>750</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_OSUUID</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_NIST_LVL_ACCT_END_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>760</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_NIST_LVL_ACCT_END_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_GRADUATION_TERM" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>770</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_GRADUATION_TERM</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_CURRENT_STUDENT_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>780</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_CURRENT_STUDENT_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_PROX_ID_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>790</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_PROX_ID_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_AFFILIATION_TERM" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>800</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_AFFILIATION_TERM</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_TRF_PAID_TERM" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>810</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_TRF_PAID_TERM</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_HOME_DIR" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>820</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_HOME_DIR</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_AFFIL_VERIFIED_CODE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>830</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_AFFIL_VERIFIED_CODE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_PROX_ID" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>840</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_PROX_ID</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_PHONE_NUMBER" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>850</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_PHONE_NUMBER</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_CURR_ONID_LITE_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>860</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_CURR_ONID_LITE_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_DEPT_ADDRESS_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>870</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_DEPT_ADDRESS_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ALTERNATE_TERM" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>880</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ALTERNATE_TERM</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_CURRENT_USER_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>890</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_CURRENT_USER_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_EMPLOYEE_CLASS" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>900</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_EMPLOYEE_CLASS</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_DESFIRE_ID_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>910</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_DESFIRE_ID_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_WEB_PAGE_ADDRESS" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>920</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_WEB_PAGE_ADDRESS</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_PRIMARY_AFFIL_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>930</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_PRIMARY_AFFIL_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_CURRENT_USER_IND_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>940</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_CURRENT_USER_IND_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_MI_NAME" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>950</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_MI_NAME</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_UDC_ID" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>960</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_UDC_ID</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_CURR_AFFIL_IND_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>970</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_CURR_AFFIL_IND_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_BIRTH_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>980</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_BIRTH_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_EMAIL_ADDRESS" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>990</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_EMAIL_ADDRESS</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_CURR_RET_IND_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1000</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_CURR_RET_IND_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_LDAP_ACTIVITY_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1010</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_LDAP_ACTIVITY_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_DEPT_ADDRESS" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1020</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_DEPT_ADDRESS</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_MANUALLY_DEACTIV_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1030</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_MANUALLY_DEACTIV_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_DESFIRE_ID" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1040</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_DESFIRE_ID</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_EMPLOYEE_STATUS" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1050</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_EMPLOYEE_STATUS</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_REMOVED_FROM_ONID_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1060</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_REMOVED_FROM_ONID_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_PHONE_NUM_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1070</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_PHONE_NUM_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ALTERNATE_END_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1080</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ALTERNATE_END_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_HAS_BEEN_ACTIVATED_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1090</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_HAS_BEEN_ACTIVATED_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_MANUALLY_DISABLED_DATE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1100</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_MANUALLY_DISABLED_DATE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_PRIMARY_AFFILIATION" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1110</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_PRIMARY_AFFILIATION</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_EMAIL_ADDRESS_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1120</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_EMAIL_ADDRESS_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_CURRENT_AFFIL_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1130</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_CURRENT_AFFIL_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_CURRENT_EMPLOYEE_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1140</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_CURRENT_EMPLOYEE_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_DEPT_DESC_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1150</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_DEPT_DESC_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ELIGIBLE_TO_REG_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1160</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ELIGIBLE_TO_REG_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_LAST_NAME_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1170</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_LAST_NAME_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_PRIMARY_EMAIL_ADDRESS" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1180</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_PRIMARY_EMAIL_ADDRESS</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_DUAL_ADMIT_CODE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1190</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_DUAL_ADMIT_CODE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ATD_TERM" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1200</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ATD_TERM</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_UDC_ID_UPD_IND" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1210</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_UDC_ID_UPD_IND</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_DEPT_DESC" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1220</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_DEPT_DESC</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" name="GYBONID_ONID_LITE_CODE" type="xsd:string">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayOrder>1230</a:displayOrder>
+                              <ra:frameworkAttributeName>GYBONID_ONID_LITE_CODE</ra:frameworkAttributeName>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                     <xsd:element minOccurs="0" ref="icfs:uid">
+                        <xsd:annotation>
+                           <xsd:appinfo>
+                              <a:displayName>ConnId UID</a:displayName>
+                              <a:displayOrder>100</a:displayOrder>
+                              <a:access>read</a:access>
+                           </xsd:appinfo>
+                        </xsd:annotation>
+                     </xsd:element>
+                  </xsd:sequence>
+               </xsd:complexType>
+            </xsd:schema>
+         </definition>
+      </schema>
+      <schemaHandling>
+         <objectType id="6">
+            <kind>account</kind>
+            <default>true</default>
+            <objectClass>ri:AccountObjectClass</objectClass>
+            <attribute>
+               <ref>icfs:uid</ref>
+               <displayName>icfs:uid(GYBONID_PIDM)</displayName>
+					<limitations>
+						<access>
+							<read>true</read>
+						</access>
+                    </limitations>
+            </attribute>
+            <attribute>
+               <ref>icfs:name</ref>
+               <displayName>icfs:name(GYBONID_PIDM)</displayName>
+				<limitations>
+					<access>
+						<read>true</read>
+					</access>
+				</limitations>
+				<inbound>
+                  <target>
+                     <path>$user/extension/idBannerPIDM</path>
+                  </target>
+				</inbound>
+            </attribute>
+            <attribute>
+               <ref>ri:GYBONID_OSUUID</ref>
+               <inbound>
+					<expression><script><code>basic.stringify(input)</code></script></expression>
+                  <target>
+                     <path>$user/name</path>
+                  </target>
+               </inbound>
+            </attribute>
+            <attribute>
+               <ref>ri:GYBONID_LOGIN_NAME</ref>
+               <inbound>
+                  <target>
+                     <path>$user/extension/username</path>
+                  </target>
+               </inbound>
+            </attribute>
+            <attribute>
+               <ref>ri:GYBONID_OSU_ID</ref>
+				<limitations>
+					<access>
+						<read>true</read>
+					</access>
+				</limitations>
+               <inbound>
+                  <target>
+                     <path>$user/extension/idBannerOSUID</path>
+                  </target>
+               </inbound>
+            </attribute>
+            <attribute>
+               <ref>ri:GYBONID_UDC_ID</ref>
+				<limitations>
+					<access>
+						<read>true</read>
+					</access>
+				</limitations>
+               <inbound>
+                  <target>
+                     <path>$user/extension/idBannerUDCID</path>
+                  </target>
+               </inbound>
+            </attribute>
+            <attribute>
+               <ref>ri:GYBONID_FIRST_NAME</ref>
+               <inbound>
+                  <target>
+                     <path>$user/givenName</path>
+                  </target>
+               </inbound>
+            </attribute>
+            <attribute>
+               <ref>ri:GYBONID_MI_NAME</ref>
+               <inbound>
+                  <target>
+                     <path>$user/additionalName</path>
+                  </target>
+               </inbound>
+            </attribute>
+            <attribute>
+               <ref>ri:GYBONID_LAST_NAME</ref>
+               <inbound>
+                  <target>
+                     <path>$user/familyName</path>
+                  </target>
+               </inbound>
+            </attribute>
+            <attribute>
+               <ref>ri:GYBONID_BIRTH_DATE</ref>
+				<limitations>
+					<access>
+						<read>true</read>
+					</access>
+				</limitations>
+               <inbound>
+				<expression>
+					<script>
+						<code>
+							tmpdate = basic.stringify(input).split(" ")[0]
+							basic.parseDateTime("yyyy-MM-dd", tmpdate)
+						</code>
+					</script>
+				</expression>
+				<condition>
+					<script>
+						<code>basic.isEmpty(input)</code>
+					</script>
+				</condition>
+				<target>
+					<path>$user/extension/birthdate</path>
+				</target>
+               </inbound>
+            </attribute>
+         </objectType>
+      </schemaHandling>
+      <capabilities>
+         <cachingMetadata>
+            <retrievalTimestamp>2018-01-26T07:10:04.930-08:00</retrievalTimestamp>
+            <serialNumber>9dc149697130dc3-cb2a4656b4e6393f</serialNumber>
+         </cachingMetadata>
+         <native xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3" xsi:type="c:CapabilityCollectionType">
+            <cap:schema/>
+            <cap:liveSync/>
+            <cap:testConnection/>
+            <cap:create/>
+            <cap:read/>
+            <cap:update/>
+            <cap:delete/>
+            <cap:script>
+               <cap:host>
+                  <cap:type>connector</cap:type>
+               </cap:host>
+            </cap:script>
+            <cap:addRemoveAttributeValues/>
+         </native>
+      </capabilities>
+      <synchronization>
+ 
+        <objectSynchronization>
+            <name>Account sync policy</name>
+            <objectClass>ri:AccountObjectClass</objectClass>
+            <kind>account</kind>
+            <intent>default</intent>
+            <focusType>c:UserType</focusType>
+            <enabled>true</enabled>
+ 
+            <correlation>
+                <q:equal>
+                    <q:path>extension/idBannerPIDM</q:path>
+                    <expression>
+                    	<path>
+							$shadow/attributes/icfs:name
+						</path>
+                    </expression>
+                </q:equal>
+            </correlation>
+            <!-- No confirmation expression -->
+ 
+            <reaction>
+                <situation>linked</situation>
+                <synchronize>true</synchronize>
+            </reaction>
+            <reaction>
+                <situation>deleted</situation>
+                <synchronize>true</synchronize>
+                <action>
+                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#unlink</handlerUri>
+                </action>
+            </reaction>
+            <reaction>
+                <situation>unlinked</situation>
+                <synchronize>true</synchronize>
+                <action>
+                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#link</handlerUri>
+                </action>
+            </reaction>
+            <reaction>
+                <situation>unmatched</situation>
+                <synchronize>true</synchronize>
+                <action>
+                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#addFocus</handlerUri>
+                </action>
+            </reaction>
+        </objectSynchronization>
+ 
+    </synchronization>
+
+   </resource>
