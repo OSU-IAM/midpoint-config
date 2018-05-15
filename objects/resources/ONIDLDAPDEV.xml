@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+         xmlns:t='http://prism.evolveum.com/xml/ns/public/types-3'
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+         xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3"
+         xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+         xmlns:mr="http://prism.evolveum.com/xml/ns/public/matching-rule-3"
+         xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3">
+
+	<resource oid="ef2bc95b-76e0-48e2-86d6-3d4f02d3e1aa">
+		<name>ONID LDAP DEV</name>
+
+		<connectorRef type="ConnectorType">
+			<filter>
+				<q:equal>
+					<q:path>c:connectorType</q:path>
+					<q:value>com.evolveum.polygon.connector.ldap.LdapConnector</q:value>
+				</q:equal>
+			</filter>
+		</connectorRef>
+
+		<connectorConfiguration
+				xmlns:icfcldap="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-ldap/com.evolveum.polygon.connector.ldap.LdapConnector">
+
+			<!-- Configuration specific for the LDAP connector -->
+			<icfs:configurationProperties>
+				<icfcldap:port>636</icfcldap:port>
+				<icfcldap:host><expression><const>resourceONIDLDAPhost</const></expression></icfcldap:host>
+				<icfcldap:connectionSecurity>ssl</icfcldap:connectionSecurity>
+				<icfcldap:authenticationType>simple</icfcldap:authenticationType>
+				<icfcldap:baseContext><expression><const>resourceONIDLDAPbasedn</const></expression></icfcldap:baseContext>
+				<icfcldap:bindDn><expression><const>resourceONIDLDAPuser</const></expression></icfcldap:bindDn>
+				<icfcldap:bindPassword><expression><const>resourceONIDLDAPpassword</const></expression></icfcldap:bindPassword>
+				<icfcldap:vlvSortAttribute>uid</icfcldap:vlvSortAttribute>
+				<icfcldap:uidAttribute>nsUniqueId</icfcldap:uidAttribute>
+				<icfcldap:operationalAttributes>nsAccountLock</icfcldap:operationalAttributes>
+			</icfs:configurationProperties>
+
+			<!-- Generic ICF configuration -->
+			<icfs:connectorPoolConfiguration>
+				<icfs:minEvictableIdleTimeMillis>120000</icfs:minEvictableIdleTimeMillis>
+				<icfs:minIdle>1</icfs:minIdle>
+				<icfs:maxIdle>10</icfs:maxIdle>
+				<icfs:maxObjects>10</icfs:maxObjects>
+				<icfs:maxWait>150000</icfs:maxWait>
+			</icfs:connectorPoolConfiguration>
+
+			<icfs:producerBufferSize>100</icfs:producerBufferSize>
+
+			<icfs:resultsHandlerConfiguration>
+				<icfs:enableFilteredResultsHandler>false</icfs:enableFilteredResultsHandler>
+			</icfs:resultsHandlerConfiguration>
+
+		</connectorConfiguration>
+
+
+		<schemaHandling>
+			<objectType>
+				<kind>account</kind>
+				<default>true</default>
+				<objectClass>ri:AccountObjectClass</objectClass>
+
+				<!-- Definition of __NAME__ attribute handling.
+                     ICF will put entry DN into __NAME__ attribute.-->
+				<attribute>
+					<ref>icfs:name</ref>
+					<displayName>Distinguished Name</displayName>
+					<!-- Access limitation for this attribute.
+                         In our case ICF will put DN in the __NAME__ attribute.
+                         Although DN can be theoretically changed, this definition
+                         will make it immutable. -->
+                    <limitations>
+                        <access>
+                            <read>true</read>
+                            <add>true</add>
+                        </access>
+                    </limitations>
+					<outbound>
+						<strength>weak</strength>
+						<source>
+							<path>$user/name</path>
+						</source>
+						<expression>
+							<script>
+								<code>'osuuid=' + name + ',' + midpoint.getConst('resourceONIDLDAPbasedn')</code>
+							</script>
+						</expression>
+					</outbound>
+				</attribute>
+
+				<!-- Definition of __UID__ attribute handling.
+                     ICF will put entry UUID into __UID__ attribute in case it
+                     is connecting to OpenDJ/OpenDS. It may be different for
+                     other directory servers and it also depends on connector
+                     configuration. Please see connector documentation for
+                     more details.-->
+				<attribute>
+					<ref>icfs:uid</ref>
+					<displayName>Entry UUID</displayName>
+                    <limitations>
+                        <access>
+                            <read>true</read>
+                        </access>
+                    </limitations>
+				</attribute>
+
+				<!-- Definition of uid attribute handling.
+                     Do not confuse with __UID__! -->
+				<attribute>
+					<ref>ri:uid</ref>
+					<outbound>
+						<source>
+							<path>$user/extension/username</path>
+						</source>
+					</outbound>
+				</attribute>
+
+				<attribute>
+					<ref>ri:cn</ref>
+					<outbound>
+						<source>
+							<path>$user/fullName</path>
+						</source>
+					</outbound>
+				</attribute>
+
+				<attribute>
+					<ref>ri:sn</ref>
+					<outbound>
+						<source>
+							<path>$user/familyName</path>
+						</source>
+					</outbound>
+				</attribute>
+
+				<attribute>
+					<ref>ri:givenName</ref>
+					<outbound>
+						<source>
+							<path>$user/givenName</path>
+						</source>
+					</outbound>
+				</attribute>
+
+				<attribute>
+					<ref>ri:osuBirthdate</ref>
+					<outbound>
+						<source>
+							<path>$user/extension/birthdate</path>
+						</source>
+					</outbound>
+				</attribute>
+
+				<attribute>
+					<ref>ri:osuPIDM</ref>
+					<outbound>
+						<source>
+							<path>$user/extension/idBannerPIDM</path>
+						</source>
+					</outbound>
+				</attribute>
+
+				<attribute>
+					<ref>ri:osuID</ref>
+					<outbound>
+						<source>
+							<path>$user/extension/idBannerOSUID</path>
+						</source>
+					</outbound>
+				</attribute>
+
+				<attribute>
+					<ref>ri:udcid</ref>
+					<outbound>
+						<source>
+							<path>$user/extension/idBannerUDCID</path>
+						</source>
+					</outbound>
+				</attribute>
+
+				<activation>
+					<administrativeStatus>
+						<outbound>
+							<strength>weak</strength>
+						</outbound>
+					</administrativeStatus>
+				</activation>
+
+
+			</objectType>
+		</schemaHandling>
+
+		<capabilities>
+			<configured>
+				<cap:activation>
+					<cap:status>
+						<cap:attribute>ri:nsAccountLock</cap:attribute>
+						<cap:enableValue/>
+						<cap:disableValue>true</cap:disableValue>
+					</cap:status>
+				</cap:activation>
+			</configured>
+		</capabilities>
+
+		<synchronization>
+			<objectSynchronization>
+				<name>Account sync policy</name>
+				<objectClass>ri:AccountObjectClass</objectClass>
+				<kind>account</kind>
+				<intent>default</intent>
+				<focusType>c:UserType</focusType>
+				<enabled>true</enabled>
+
+				<correlation>
+					<q:equal>
+						<q:path>c:name</q:path>
+						<expression>
+							<path>
+								$shadow/attributes/ri:osuuid
+							</path>
+					</expression>
+					</q:equal>
+				</correlation>
+
+				<!-- Confirmation rule may be here, but as the search above will
+	                 always return at most one match, the confirmation rule is not needed. -->
+
+				<reaction>
+					<situation>linked</situation>
+					<synchronize>true</synchronize>
+				</reaction>
+				<reaction>
+					<situation>deleted</situation>
+					<synchronize>true</synchronize>
+					<action>
+						<handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#addShadow</handlerUri>
+					</action>
+				</reaction>
+				<reaction>
+					<situation>unlinked</situation>
+					<synchronize>true</synchronize>
+					<action>
+						<handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#link</handlerUri>
+					</action>
+				</reaction>
+				<reaction>
+					<situation>unmatched</situation>
+					<synchronize>true</synchronize>
+					<action>
+						<handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#deleteShadow</handlerUri>
+					</action>
+				</reaction>
+			</objectSynchronization>
+		</synchronization>
+	</resource>
+</objects>
