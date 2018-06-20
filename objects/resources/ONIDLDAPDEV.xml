@@ -15,10 +15,16 @@
 
 		<connectorRef type="ConnectorType">
 			<filter>
-				<q:equal>
-					<q:path>c:connectorType</q:path>
-					<q:value>com.evolveum.polygon.connector.ldap.LdapConnector</q:value>
-				</q:equal>
+				<q:and>
+					<q:equal>
+						<q:path>c:connectorType</q:path>
+						<q:value>com.evolveum.polygon.connector.ldap.LdapConnector</q:value>
+					</q:equal>
+					<q:equal>
+						<q:path>c:connectorVersion</q:path>
+						<q:value>1.5.1-osu1</q:value>
+					</q:equal>
+				</q:and>
 			</filter>
 		</connectorRef>
 
@@ -51,35 +57,55 @@
 			<icfs:producerBufferSize>100</icfs:producerBufferSize>
 
 			<icfs:resultsHandlerConfiguration>
+				<icfs:enableNormalizingResultsHandler>false</icfs:enableNormalizingResultsHandler>
 				<icfs:enableFilteredResultsHandler>false</icfs:enableFilteredResultsHandler>
+				<icfs:enableAttributesToGetSearchResultsHandler>false</icfs:enableAttributesToGetSearchResultsHandler>
 			</icfs:resultsHandlerConfiguration>
 
 		</connectorConfiguration>
 
+		<schema>
+			<generationConstraints>
+				<generateObjectClass>ri:top</generateObjectClass>
+				<generateObjectClass>ri:person</generateObjectClass>
+				<generateObjectClass>ri:organizationalPerson</generateObjectClass>
+				<generateObjectClass>ri:inetOrgPerson</generateObjectClass>
+				<generateObjectClass>ri:osuPerson</generateObjectClass>
+				<generateObjectClass>ri:eduPerson</generateObjectClass>
+				<generateObjectClass>ri:lpSghePerson</generateObjectClass>
+				<generateObjectClass>ri:googlePerson</generateObjectClass>
+				<generateObjectClass>ri:posixAccount</generateObjectClass>
+				<generateObjectClass>ri:account</generateObjectClass>
+				<generateObjectClass>ri:shadowAccount</generateObjectClass>
+			</generationConstraints>
+		</schema>
 
 		<schemaHandling>
 			<objectType>
 				<kind>account</kind>
 				<default>true</default>
-				<objectClass>ri:AccountObjectClass</objectClass>
+				<objectClass>ri:inetOrgPerson</objectClass>
+				<auxiliaryObjectClass>ri:osuPerson</auxiliaryObjectClass>
+				<auxiliaryObjectClass>ri:eduPerson</auxiliaryObjectClass>
+				<!-- <auxiliaryObjectClass>ri:posixAccount</auxiliaryObjectClass> -->
+				<!-- <auxiliaryObjectClass>ri:account</auxiliaryObjectClass> -->
+				<!-- <auxiliaryObjectClass>ri:shadowAccount</auxiliaryObjectClass> -->
+				<!-- <auxiliaryObjectClass>ri:lpSghePerson</auxiliaryObjectClass> -->
 
-				<!-- Definition of __NAME__ attribute handling.
-                     ICF will put entry DN into __NAME__ attribute.-->
+
 				<attribute>
-					<ref>icfs:name</ref>
+					<ref>ri:dn</ref>
 					<displayName>Distinguished Name</displayName>
-					<!-- Access limitation for this attribute.
-                         In our case ICF will put DN in the __NAME__ attribute.
-                         Although DN can be theoretically changed, this definition
-                         will make it immutable. -->
                     <limitations>
+                    	<minOccurs>0</minOccurs>
                         <access>
                             <read>true</read>
                             <add>true</add>
+                            <modify>true</modify>
                         </access>
                     </limitations>
+                    <matchingRule>mr:distinguishedName</matchingRule>
 					<outbound>
-						<strength>weak</strength>
 						<source>
 							<path>$user/name</path>
 						</source>
@@ -91,15 +117,9 @@
 					</outbound>
 				</attribute>
 
-				<!-- Definition of __UID__ attribute handling.
-                     ICF will put entry UUID into __UID__ attribute in case it
-                     is connecting to OpenDJ/OpenDS. It may be different for
-                     other directory servers and it also depends on connector
-                     configuration. Please see connector documentation for
-                     more details.-->
 				<attribute>
-					<ref>icfs:uid</ref>
-					<displayName>Entry UUID</displayName>
+					<ref>ri:nsUniqueId</ref>
+					<displayName>nsUniqueId</displayName>
                     <limitations>
                         <access>
                             <read>true</read>
@@ -107,8 +127,6 @@
                     </limitations>
 				</attribute>
 
-				<!-- Definition of uid attribute handling.
-                     Do not confuse with __UID__! -->
 				<attribute>
 					<ref>ri:uid</ref>
 					<outbound>
@@ -120,15 +138,38 @@
 
 				<attribute>
 					<ref>ri:cn</ref>
+					<limitations>
+						<maxOccurs>1</maxOccurs>
+					</limitations>
 					<outbound>
 						<source>
-							<path>$user/fullName</path>
+							<path>$user/familyName</path>
 						</source>
+						<source>
+							<path>$user/givenName</path>
+						</source>
+						<source>
+							<path>$user/additionalName</path>
+						</source>
+						<expression>
+							<script>
+								<code>
+									tmpname = familyName + ', ' + givenName;
+									if (additionalName) {
+										tmpname = tmpname + ' ' + additionalName;
+									}
+									tmpname;
+								</code>
+							</script>
+						</expression>
 					</outbound>
 				</attribute>
 
 				<attribute>
 					<ref>ri:sn</ref>
+					<limitations>
+						<maxOccurs>1</maxOccurs>
+					</limitations>
 					<outbound>
 						<source>
 							<path>$user/familyName</path>
@@ -138,6 +179,9 @@
 
 				<attribute>
 					<ref>ri:givenName</ref>
+					<limitations>
+						<maxOccurs>1</maxOccurs>
+					</limitations>
 					<outbound>
 						<source>
 							<path>$user/givenName</path>
@@ -160,6 +204,15 @@
 						<source>
 							<path>$user/extension/idBannerPIDM</path>
 						</source>
+	 					<expression>
+							<script>
+								<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
+								<code>
+									BigInteger bi = new BigInteger(basic.stringify(idBannerPIDM));
+									return bi;
+								</code>
+							</script>
+						</expression>
 					</outbound>
 				</attribute>
 
@@ -169,9 +222,50 @@
 						<source>
 							<path>$user/extension/idBannerOSUID</path>
 						</source>
+	 					<expression>
+							<script>
+								<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
+								<code>
+									BigInteger bi = new BigInteger(basic.stringify(idBannerOSUID));
+									return bi;
+								</code>
+							</script>
+						</expression>
 					</outbound>
 				</attribute>
 
+				<attribute>
+					<ref>ri:osuUID</ref>
+					<outbound>
+						<source>
+							<path>$user/name</path>
+						</source>
+	 					<expression>
+							<script>
+								<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
+								<code>
+									BigInteger bi = new BigInteger(basic.stringify(user?.getName()));
+									return bi;
+								</code>
+							</script>
+						</expression>
+					</outbound>
+				</attribute>
+
+				<attribute>
+					<ref>ri:osuPrimaryAffiliation</ref>
+					<limitations>
+						<maxOccurs>1</maxOccurs>
+					</limitations>
+					<outbound>
+						<strength>weak</strength>
+						<expression>
+							<value>unknown</value>
+						</expression>
+					</outbound>
+				</attribute>
+
+<!-- 
 				<attribute>
 					<ref>ri:udcid</ref>
 					<outbound>
@@ -180,7 +274,7 @@
 						</source>
 					</outbound>
 				</attribute>
-
+-->
 				<activation>
 					<administrativeStatus>
 						<outbound>
@@ -208,7 +302,6 @@
 		<synchronization>
 			<objectSynchronization>
 				<name>Account sync policy</name>
-				<objectClass>ri:AccountObjectClass</objectClass>
 				<kind>account</kind>
 				<intent>default</intent>
 				<focusType>c:UserType</focusType>
@@ -218,10 +311,8 @@
 					<q:equal>
 						<q:path>c:name</q:path>
 						<expression>
-							<path>
-								$shadow/attributes/ri:osuuid
-							</path>
-					</expression>
+							<path>$shadow/attributes/ri:osuuid</path>
+						</expression>
 					</q:equal>
 				</correlation>
 
@@ -236,7 +327,7 @@
 					<situation>deleted</situation>
 					<synchronize>true</synchronize>
 					<action>
-						<handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#addShadow</handlerUri>
+						<handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#unlink</handlerUri>
 					</action>
 				</reaction>
 				<reaction>
