@@ -40,9 +40,11 @@
 				<icfcldap:baseContext><expression><const>resourceONIDLDAPbasedn</const></expression></icfcldap:baseContext>
 				<icfcldap:bindDn><expression><const>resourceONIDLDAPuser</const></expression></icfcldap:bindDn>
 				<icfcldap:bindPassword><expression><const>resourceONIDLDAPpassword</const></expression></icfcldap:bindPassword>
+				<icfcldap:connectTimeout>300000</icfcldap:connectTimeout>
 				<icfcldap:vlvSortAttribute>uid</icfcldap:vlvSortAttribute>
 				<icfcldap:uidAttribute>nsUniqueId</icfcldap:uidAttribute>
 				<icfcldap:operationalAttributes>nsAccountLock</icfcldap:operationalAttributes>
+				<icfcldap:operationalAttributes>nsRoleDN</icfcldap:operationalAttributes>
 			</icfs:configurationProperties>
 
 			<!-- Generic ICF configuration -->
@@ -77,6 +79,7 @@
 				<generateObjectClass>ri:posixAccount</generateObjectClass>
 				<generateObjectClass>ri:account</generateObjectClass>
 				<generateObjectClass>ri:shadowAccount</generateObjectClass>
+				<generateObjectClass>ri:nsNestedRoleDefinition</generateObjectClass>
 			</generationConstraints>
 		</schema>
 
@@ -129,7 +132,11 @@
 
 				<attribute>
 					<ref>ri:uid</ref>
+					<limitations>
+						<maxOccurs>1</maxOccurs>
+					</limitations>
 					<outbound>
+						<strength>strong</strength>
 						<source>
 							<path>$user/extension/username</path>
 						</source>
@@ -142,6 +149,7 @@
 						<maxOccurs>1</maxOccurs>
 					</limitations>
 					<outbound>
+						<strength>strong</strength>
 						<source>
 							<path>$user/familyName</path>
 						</source>
@@ -171,6 +179,7 @@
 						<maxOccurs>1</maxOccurs>
 					</limitations>
 					<outbound>
+						<strength>strong</strength>
 						<source>
 							<path>$user/familyName</path>
 						</source>
@@ -183,6 +192,7 @@
 						<maxOccurs>1</maxOccurs>
 					</limitations>
 					<outbound>
+						<strength>strong</strength>
 						<source>
 							<path>$user/givenName</path>
 						</source>
@@ -192,6 +202,7 @@
 				<attribute>
 					<ref>ri:osuBirthdate</ref>
 					<outbound>
+						<strength>strong</strength>
 						<source>
 							<path>$user/extension/birthdate</path>
 						</source>
@@ -201,6 +212,7 @@
 				<attribute>
 					<ref>ri:osuPIDM</ref>
 					<outbound>
+						<strength>strong</strength>
 						<source>
 							<path>$user/extension/idBannerPIDM</path>
 						</source>
@@ -219,6 +231,7 @@
 				<attribute>
 					<ref>ri:osuID</ref>
 					<outbound>
+						<strength>strong</strength>
 						<source>
 							<path>$user/extension/idBannerOSUID</path>
 						</source>
@@ -244,7 +257,7 @@
 							<script>
 								<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
 								<code>
-									BigInteger bi = new BigInteger(basic.stringify(user?.getName()));
+									BigInteger bi = new BigInteger(basic.stringify(user.getName()));
 									return bi;
 								</code>
 							</script>
@@ -261,6 +274,69 @@
 						<strength>weak</strength>
 						<expression>
 							<value>unknown</value>
+						</expression>
+					</outbound>
+				</attribute>
+
+				<attribute>
+					<ref>ri:osuPrimaryMail</ref>
+					<outbound>
+						<strength>weak</strength>
+						<source>
+							<path>$user/extension/username</path>
+						</source>
+						<expression>
+							<script>
+								<code>username + '@oregonstate.edu'</code>
+							</script>
+						</expression>
+					</outbound>
+				</attribute>
+
+				<attribute>
+					<ref>ri:nsRoleDN</ref>
+					<outbound>
+						<strength>strong</strength>
+						<expression>
+							<value>cn=onidrole,o=orst.edu</value>
+						</expression>
+					</outbound>
+				</attribute>
+
+
+				<attribute>
+					<ref>ri:eduPersonPrincipalName</ref>
+					<outbound>
+						<strength>strong</strength>
+						<source>
+							<path>$user/extension/username</path>
+						</source>
+						<expression>
+							<script>
+								<code>username + '@oregonstate.edu'</code>
+							</script>
+						</expression>
+					</outbound>
+				</attribute>
+
+				<attribute>
+					<ref>ri:eduPersonPrincipalNamePrior</ref>
+					<outbound>
+						<strength>strong</strength>
+						<source>
+							<path>$user/extension/priorUsernames</path>
+						</source>
+						<expression>
+							<script>
+								<code>
+									if (!basic.isEmpty(priorUsernames)) {
+										return priorUsernames + '@oregonstate.edu';
+									}
+									else {
+										return null;
+									}
+								</code>
+							</script>
 						</expression>
 					</outbound>
 				</attribute>

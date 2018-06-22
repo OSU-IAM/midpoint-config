@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!-- (c) 2011-2017 Evolveum, All rights reserved -->
+
+<xsd:schema elementFormDefault="qualified"
+  targetNamespace="http://example.com/midpoint"
+  xmlns:tns="http://example.com/midpoint"
+  xmlns:a="http://prism.evolveum.com/xml/ns/public/annotation-3"
+  xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:complexType name="UserExtensionType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <a:extension ref="c:UserType"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="idBannerPIDM" type="xsd:string" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <a:indexed>true</a:indexed>
+            <a:displayName>ID Banner PIDM</a:displayName>
+            <a:displayOrder>50</a:displayOrder>
+          </xsd:appinfo>
+          <xsd:documentation>
+Banner PIDM identifier
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="idBannerOSUID" type="xsd:string" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <a:indexed>true</a:indexed>
+            <a:displayName>ID Banner OSU ID</a:displayName>
+            <a:displayOrder>51</a:displayOrder>
+          </xsd:appinfo>
+          <xsd:documentation>
+Banner OSU ID identifier
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="idBannerUDCID" type="xsd:string" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <a:indexed>true</a:indexed>
+            <a:displayName>ID Banner UDC ID</a:displayName>
+            <a:displayOrder>52</a:displayOrder>
+          </xsd:appinfo>
+          <xsd:documentation>
+Banner UDC ID identifier
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>
