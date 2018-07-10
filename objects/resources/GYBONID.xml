@@ -1,4 +1,13 @@
-<resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:apti="http://midpoint.evolveum.com/xml/ns/public/common/api-types-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="aa35936d-fe06-4f3c-8af7-df5f3f332c3e" version="18">
+<resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+		xmlns:apti="http://midpoint.evolveum.com/xml/ns/public/common/api-types-3"
+		xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+		xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
+		xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+		xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+		xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+		xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		oid="aa35936d-fe06-4f3c-8af7-df5f3f332c3e" version="18">
       <name>GYBONID</name>
       <metadata>
          <modifyTimestamp>2018-01-26T07:16:17.612-08:00</modifyTimestamp>
@@ -1162,14 +1171,14 @@
 				<expression>
 					<script>
 						<code>
-							tmpdate = basic.stringify(input).split(" ")[0]
-							basic.parseDateTime("yyyy-MM-dd", tmpdate)
+							tmpdate = basic.stringify(input).split(" ")[0];
+							basic.parseDateTime("yyyy-MM-dd", tmpdate);
 						</code>
 					</script>
 				</expression>
 				<condition>
 					<script>
-						<code>basic.isEmpty(input)</code>
+						<code>!basic.isEmpty(input)</code>
 					</script>
 				</condition>
 				<target>
@@ -1188,10 +1197,8 @@
             <cap:schema/>
             <cap:liveSync/>
             <cap:testConnection/>
-            <cap:create/>
             <cap:read/>
             <cap:update/>
-            <cap:delete/>
             <cap:script>
                <cap:host>
                   <cap:type>connector</cap:type>
