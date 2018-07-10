@@ -44,6 +44,7 @@
 				<icfcldap:vlvSortAttribute>uid</icfcldap:vlvSortAttribute>
 				<icfcldap:uidAttribute>nsUniqueId</icfcldap:uidAttribute>
 				<icfcldap:operationalAttributes>nsAccountLock</icfcldap:operationalAttributes>
+				<icfcldap:operationalAttributes>nsRole</icfcldap:operationalAttributes>
 				<icfcldap:operationalAttributes>nsRoleDN</icfcldap:operationalAttributes>
 			</icfs:configurationProperties>
 
@@ -206,13 +207,25 @@
 						<source>
 							<path>$user/extension/birthdate</path>
 						</source>
+						<expression>
+							<script>
+								<code>
+									tmpdate = basic.formatDateTime("yyyyMMdd", birthdate)
+								</code>
+							</script>
+						</expression>
+						<condition>
+							<script>
+								<code>!basic.isEmpty(birthdate)</code>
+							</script>
+						</condition>
 					</outbound>
 				</attribute>
 
 				<attribute>
 					<ref>ri:osuPIDM</ref>
 					<outbound>
-						<strength>strong</strength>
+						<!-- strong mapping is always updated for BigIntegers <strength>strong</strength> -->
 						<source>
 							<path>$user/extension/idBannerPIDM</path>
 						</source>
@@ -231,7 +244,7 @@
 				<attribute>
 					<ref>ri:osuID</ref>
 					<outbound>
-						<strength>strong</strength>
+						<!-- strong mapping is always updated for BigIntegers <strength>strong</strength> -->
 						<source>
 							<path>$user/extension/idBannerOSUID</path>
 						</source>
@@ -296,7 +309,7 @@
 				<attribute>
 					<ref>ri:nsRoleDN</ref>
 					<outbound>
-						<strength>strong</strength>
+						<strength>weak</strength>
 						<expression>
 							<value>cn=onidrole,o=orst.edu</value>
 						</expression>
@@ -351,6 +364,7 @@
 					</outbound>
 				</attribute>
 -->
+				<!-- Disabling this feature for now
 				<activation>
 					<administrativeStatus>
 						<outbound>
@@ -358,20 +372,23 @@
 						</outbound>
 					</administrativeStatus>
 				</activation>
-
+				-->
 
 			</objectType>
 		</schemaHandling>
 
 		<capabilities>
 			<configured>
+				<!-- Disabling this feature for now
 				<cap:activation>
+
 					<cap:status>
 						<cap:attribute>ri:nsAccountLock</cap:attribute>
 						<cap:enableValue/>
 						<cap:disableValue>true</cap:disableValue>
 					</cap:status>
 				</cap:activation>
+				-->
 			</configured>
 		</capabilities>
 
