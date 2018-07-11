@@ -1,0 +1,21 @@
+<role xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+	xmlns:apti="http://midpoint.evolveum.com/xml/ns/public/common/api-types-3"
+	xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+	xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
+	xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+	xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+	xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+	xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	oid="0643c9e2-8125-4c3c-9445-aeb48c9bdca9" version="1">
+	<name>Base ONID</name>
+	<description>Assigns the LDAP and AD resources</description>
+	<inducement id="1">
+		<construction>
+			<!-- This is the ONIDLDAPDEV resource -->
+			<resourceRef oid="ef2bc95b-76e0-48e2-86d6-3d4f02d3e1aa" relation="org:default" type="c:ResourceType"/>
+			<kind>account</kind>
+		</construction>
+	</inducement>
+	
+</role>
