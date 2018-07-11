@@ -57,6 +57,7 @@
 		<construction>
 			<!-- This is the GTEST resource -->
 			<resourceRef oid="8d049132-b84c-4ee6-a26c-12ea0f7dd8fe" relation="org:default" type="c:ResourceType"/>
+			<kind>account</kind>
 		</construction>
 	</inducement>
 	
