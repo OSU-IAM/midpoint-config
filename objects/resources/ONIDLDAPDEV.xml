@@ -94,7 +94,7 @@
 				<!-- <auxiliaryObjectClass>ri:posixAccount</auxiliaryObjectClass> -->
 				<!-- <auxiliaryObjectClass>ri:account</auxiliaryObjectClass> -->
 				<!-- <auxiliaryObjectClass>ri:shadowAccount</auxiliaryObjectClass> -->
-				<!-- <auxiliaryObjectClass>ri:lpSghePerson</auxiliaryObjectClass> -->
+				<auxiliaryObjectClass>ri:lpSghePerson</auxiliaryObjectClass>
 
 
 				<attribute>
@@ -354,7 +354,7 @@
 					</outbound>
 				</attribute>
 
-<!-- 
+
 				<attribute>
 					<ref>ri:udcid</ref>
 					<outbound>
@@ -363,7 +363,7 @@
 						</source>
 					</outbound>
 				</attribute>
--->
+
 				<!-- Disabling this feature for now
 				<activation>
 					<administrativeStatus>
