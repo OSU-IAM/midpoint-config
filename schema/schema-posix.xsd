@@ -28,7 +28,7 @@
       <xsd:element name="posixGidNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
         <xsd:annotation>
           <xsd:appinfo>
-            <a:indexed>true</a:indexed>
+            <a:indexed>false</a:indexed>
             <a:displayName>posix GID Number</a:displayName>
             <a:displayOrder>51</a:displayOrder>
           </xsd:appinfo>
@@ -37,7 +37,7 @@
       <xsd:element name="posixHomeDir" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
         <xsd:annotation>
           <xsd:appinfo>
-            <a:indexed>true</a:indexed>
+            <a:indexed>false</a:indexed>
             <a:displayName>posix Home Directory</a:displayName>
             <a:displayOrder>52</a:displayOrder>
           </xsd:appinfo>
