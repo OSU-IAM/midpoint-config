@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!-- (c) 2011-2017 Evolveum, All rights reserved -->
+
+<xsd:schema elementFormDefault="qualified"
+  targetNamespace="http://example.com/midpoint"
+  xmlns:tns="http://example.com/midpoint"
+  xmlns:a="http://prism.evolveum.com/xml/ns/public/annotation-3"
+  xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <xsd:complexType name="UserExtensionType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <a:extension ref="c:UserType"/>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="posixUidNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <a:indexed>true</a:indexed>
+            <a:displayName>posix UID Number</a:displayName>
+            <a:displayOrder>50</a:displayOrder>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="posixGidNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <a:indexed>true</a:indexed>
+            <a:displayName>posix GID Number</a:displayName>
+            <a:displayOrder>51</a:displayOrder>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="posixHomeDir" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <a:indexed>true</a:indexed>
+            <a:displayName>posix Home Directory</a:displayName>
+            <a:displayOrder>52</a:displayOrder>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    </xsd:complexType>
+
+</xsd:schema>
