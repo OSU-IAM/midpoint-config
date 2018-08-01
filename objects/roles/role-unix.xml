@@ -1,0 +1,63 @@
+<role oid="47c290d9-f4de-45fa-b12b-056b95590a08"
+	xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+	xmlns:apti="http://midpoint.evolveum.com/xml/ns/public/common/api-types-3"
+	xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+	xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
+	xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+	xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+	xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+	xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="1">
+	<name>Unix</name>
+	<description>Assigns Posix attributes in LDAP</description>
+
+	<inducement id="1">
+		<construction>
+			<!-- This is the ONIDLDAPDEV resource -->
+			<resourceRef oid="ef2bc95b-76e0-48e2-86d6-3d4f02d3e1aa" relation="org:default" type="c:ResourceType"/>
+			<kind>account</kind>
+			<auxiliaryObjectClass>ri:posixAccount</auxiliaryObjectClass>
+
+			<attribute>
+				<ref>ri:uidNumber</ref>
+				<outbound>
+					<source>
+						<path>$user/extension/posixUidNumber</path>
+					</source>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:gidNumber</ref>
+				<outbound>
+					<source>
+						<path>$user/extension/posixGidNumber</path>
+					</source>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:homeDirectory</ref>
+				<outbound>
+					<source>
+						<path>$user/extension/posixHomeDir</path>
+					</source>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:loginShell</ref>
+				<outbound>
+					<strength>weak</strength>
+					<expression>
+						<value>/bin/bash</value>
+					</expression>
+				</outbound>
+			</attribute>
+
+
+		</construction>
+	</inducement>
+	
+</role>
