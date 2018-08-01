@@ -118,6 +118,8 @@
             <gen351:table>GYBONID</gen351:table>
             <gen351:keyColumn>GYBONID_PIDM</gen351:keyColumn>
             <gen351:changeLogColumn>GYBONID_ACTIVITY_DATE</gen351:changeLogColumn>
+            <gen351:nativeTimestamps>true</gen351:nativeTimestamps>
+            <gen351:allNative>true</gen351:allNative>
             <gen351:jdbcDriver>oracle.jdbc.driver.OracleDriver</gen351:jdbcDriver>
             <gen351:jdbcUrlTemplate><expression><const>resourceGYBONIDjdbcurltemplate</const></expression></gen351:jdbcUrlTemplate>
          </icfc:configurationProperties>
@@ -1186,6 +1188,32 @@
 				</target>
                </inbound>
             </attribute>
+            <attribute>
+               <ref>ri:GYBONID_UID</ref>
+               <inbound>
+					<expression><script><code>basic.stringify(input)</code></script></expression>
+                  <target>
+                     <path>$user/extension/posixUidNumber</path>
+                  </target>
+               </inbound>
+            </attribute>
+            <attribute>
+               <ref>ri:GYBONID_GID</ref>
+               <inbound>
+					<expression><script><code>basic.stringify(input)</code></script></expression>
+                  <target>
+                     <path>$user/extension/posixGidNumber</path>
+                  </target>
+               </inbound>
+            </attribute>
+            <attribute>
+               <ref>ri:GYBONID_HOME_DIR</ref>
+               <inbound>
+                  <target>
+                     <path>$user/extension/posixHomeDir</path>
+                  </target>
+               </inbound>
+            </attribute>
          </objectType>
       </schemaHandling>
       <capabilities>
@@ -1216,6 +1244,14 @@
             <intent>default</intent>
             <focusType>c:UserType</focusType>
             <enabled>true</enabled>
+
+			<condition>
+				<script>
+					<code>
+						!basic.isEmpty(basic.getAttributeValue(shadow, "GYBONID_OSUUID"))
+					</code>
+				</script>
+			</condition>
  
             <correlation>
                 <q:equal>
