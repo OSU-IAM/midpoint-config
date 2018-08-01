@@ -34,7 +34,7 @@
           </xsd:appinfo>
         </xsd:annotation>
       </xsd:element>
-      <xsd:element name="posixHomeDir" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+      <xsd:element name="posixHomeDir" type="xsd:string" minOccurs="0" maxOccurs="1">
         <xsd:annotation>
           <xsd:appinfo>
             <a:indexed>false</a:indexed>
