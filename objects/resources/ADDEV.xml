@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+		xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+		xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3"
+		xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+		xmlns:mr="http://prism.evolveum.com/xml/ns/public/matching-rule-3"
+		xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+		xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+		oid="724ba798-90cd-4c5a-bdf7-2ea7f1f6de3b" version="2">
+	<name>midPoint AD DEV</name>
+
+	<connectorRef type="ConnectorType">
+		<filter>
+			<q:and>
+				<q:equal>
+					<q:path>c:connectorType</q:path>
+					<q:value>com.evolveum.polygon.connector.ldap.ad.AdLdapConnector</q:value>
+				</q:equal>
+				<q:equal>
+					<q:path>c:connectorVersion</q:path>
+					<q:value>1.6</q:value>
+				</q:equal>
+			</q:and>
+		</filter>
+	</connectorRef>
+
+	<connectorConfiguration>
+		<icfs:configurationProperties xmlns:icfcldap="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-ldap/com.evolveum.polygon.connector.ldap.ad.AdLdapConnector">
+			<icfcldap:port>636</icfcldap:port>
+			<icfcldap:host><expression><const>resourceONIDADhost</const></expression></icfcldap:host>
+			<icfcldap:connectionSecurity>ssl</icfcldap:connectionSecurity>
+			<icfcldap:baseContext><expression><const>resourceONIDADbasedn</const></expression></icfcldap:baseContext>
+			<icfcldap:bindDn><expression><const>resourceONIDADuser</const></expression></icfcldap:bindDn>
+			<icfcldap:bindPassword><expression><const>resourceONIDADpassword</const></expression></icfcldap:bindPassword>
+			<icfcldap:pagingBlockSize>20</icfcldap:pagingBlockSize>
+			<icfcldap:operationalAttributes>legacyExchangeDN</icfcldap:operationalAttributes>
+			<icfcldap:operationalAttributes>msExchHideFromAddressLists</icfcldap:operationalAttributes>
+			<icfcldap:rawUserAccountControlAttribute>true</icfcldap:rawUserAccountControlAttribute>
+		</icfs:configurationProperties>
+
+		<!-- Generic ICF configuration -->
+		<icfs:connectorPoolConfiguration>
+			<icfs:minEvictableIdleTimeMillis>120000</icfs:minEvictableIdleTimeMillis>
+			<icfs:minIdle>1</icfs:minIdle>
+			<icfs:maxIdle>10</icfs:maxIdle>
+			<icfs:maxObjects>10</icfs:maxObjects>
+			<icfs:maxWait>150000</icfs:maxWait>
+		</icfs:connectorPoolConfiguration>
+
+		<icfs:resultsHandlerConfiguration>
+			<icfs:enableNormalizingResultsHandler>false</icfs:enableNormalizingResultsHandler>
+			<icfs:enableFilteredResultsHandler>false</icfs:enableFilteredResultsHandler>
+			<icfs:enableAttributesToGetSearchResultsHandler>false</icfs:enableAttributesToGetSearchResultsHandler>
+		</icfs:resultsHandlerConfiguration>
+
+	</connectorConfiguration>
+
+	<schema>
+ 		<generationConstraints>
+			<generateObjectClass>ri:user</generateObjectClass>
+			<!-- auxiliaryClass objectclasses for user objectclass -->
+			<generateObjectClass>ri:eduPerson</generateObjectClass>
+			<generateObjectClass>ri:osuPerson</generateObjectClass>
+
+		</generationConstraints>
+	</schema>
+
+	<schemaHandling>
+		<objectType>
+			<kind>account</kind>
+			<default>true</default>
+			<objectClass>ri:user</objectClass>
+
+			<attribute>
+				<ref>ri:dn</ref>
+				<displayName>Distinguished Name</displayName>
+				<matchingRule>mr:distinguishedName</matchingRule>
+				<outbound>
+				    <source>
+				    	<path>$user/extension/username</path>
+				    </source>
+					<expression>
+						<script>
+							<code>'cn=' + username + ',' + midpoint.getConst('resourceONIDADuserOU')</code>
+						</script>
+					</expression>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:cn</ref>
+				<limitations>
+					<minOccurs>0</minOccurs>
+				</limitations>
+				<outbound>
+					<source>
+						<path>$user/extension/username</path>
+					</source>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:sAMAccountName</ref>
+				<outbound>
+					<source>
+						<path>$user/extension/username</path>
+					</source>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:userPrincipalName</ref>
+				<outbound>
+					<strength>strong</strength>
+					<source>
+						<path>$user/extension/username</path>
+					</source>
+					<expression>
+						<script>
+							<code>username + '@oregonstate.edu'</code>
+						</script>
+					</expression>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:sn</ref>
+				<limitations>
+					<maxOccurs>1</maxOccurs>
+				</limitations>
+				<outbound>
+					<strength>strong</strength>
+					<source>
+						<path>$user/familyName</path>
+					</source>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:givenName</ref>
+				<limitations>
+					<maxOccurs>1</maxOccurs>
+				</limitations>
+				<outbound>
+					<strength>strong</strength>
+					<source>
+						<path>$user/givenName</path>
+					</source>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:displayName</ref>
+				<limitations>
+					<maxOccurs>1</maxOccurs>
+				</limitations>
+				<outbound>
+					<strength>weak</strength>
+					<expression>
+						<value>Waiting for update</value>
+					</expression>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:userAccountControl</ref>
+				<outbound>
+					<strength>weak</strength>
+					<expression>
+						<value>514</value>
+					</expression>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:description</ref>
+				<outbound>
+					<strength>weak</strength>
+					<expression>
+						<value>ONID User</value>
+					</expression>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:legacyExchangeDN</ref>
+				<outbound>
+					<strength>weak</strength>
+					<source>
+						<path>$user/extension/username</path>
+					</source>
+					<expression>
+						<script>
+							<code>'/O=Oregon State University/OU=Information Services/cn=ONID/cn=' + username</code>
+						</script>
+					</expression>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:msExchHideFromAddressLists</ref>
+				<outbound>
+					<strength>weak</strength>
+					<expression>
+						<value>true</value>
+					</expression>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:scriptPath</ref>
+				<outbound>
+					<strength>weak</strength>
+					<expression>
+						<value>logon.vbs</value>
+					</expression>
+				</outbound>
+			</attribute>
+
+			<!-- These 3 attributes are defined as mandatory in the 'top' objectclass, but they aren't really -->
+			<attribute>
+				<ref>ri:nTSecurityDescriptor</ref>
+				<limitations>
+					<minOccurs>0</minOccurs>
+				</limitations>
+			</attribute>
+			<attribute>
+				<ref>ri:instanceType</ref>
+				<limitations>
+					<minOccurs>0</minOccurs>
+				</limitations>
+			</attribute>
+			<attribute>
+				<ref>ri:objectCategory</ref>
+				<limitations>
+					<minOccurs>0</minOccurs>
+				</limitations>
+				<outbound>
+					<expression>
+						<script>
+							<code>'CN=Person,CN=Schema,CN=Configuration,' + midpoint.getConst('resourceONIDADbasedn')</code>
+						</script>
+					</expression>
+				</outbound>
+			</attribute>
+
+		</objectType>
+	</schemaHandling>
+
+	<synchronization>
+		<objectSynchronization>
+			<name>Account sync policy</name>
+			<kind>account</kind>
+			<intent>default</intent>
+			<focusType>c:UserType</focusType>
+			<enabled>true</enabled>
+
+			<correlation>
+				<q:equal>
+					<q:path>extension/username</q:path>
+					<expression>
+						<path>$shadow/attributes/ri:sAMAccountName</path>
+					</expression>
+				</q:equal>
+			</correlation>
+
+			<!-- Confirmation rule may be here, but as the search above will
+	                always return at most one match, the confirmation rule is not needed. -->
+
+			<reaction>
+				<situation>linked</situation>
+				<synchronize>true</synchronize>
+			</reaction>
+			<reaction>
+				<situation>deleted</situation>
+				<synchronize>true</synchronize>
+				<action>
+					<handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#unlink</handlerUri>
+				</action>
+			</reaction>
+			<reaction>
+				<situation>unlinked</situation>
+				<synchronize>true</synchronize>
+				<action>
+					<handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#link</handlerUri>
+				</action>
+			</reaction>
+			<reaction>
+				<situation>unmatched</situation>
+				<synchronize>true</synchronize>
+				<action>
+					<handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#deleteShadow</handlerUri>
+				</action>
+			</reaction>
+		</objectSynchronization>
+	</synchronization>
+
+</resource>
