@@ -70,6 +70,8 @@
 			<kind>account</kind>
 			<default>true</default>
 			<objectClass>ri:user</objectClass>
+			<auxiliaryObjectClass>ri:eduPerson</auxiliaryObjectClass>
+			<auxiliaryObjectClass>ri:osuPerson</auxiliaryObjectClass>
 
 			<attribute>
 				<ref>ri:dn</ref>
@@ -118,6 +120,43 @@
 					<expression>
 						<script>
 							<code>username + '@oregonstate.edu'</code>
+						</script>
+					</expression>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:eduPersonPrincipalName</ref>
+				<outbound>
+					<strength>strong</strength>
+					<source>
+						<path>$user/extension/username</path>
+					</source>
+					<expression>
+						<script>
+							<code>username + '@oregonstate.edu'</code>
+						</script>
+					</expression>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:eduPersonPrincipalNamePrior</ref>
+				<outbound>
+					<strength>strong</strength>
+					<source>
+						<path>$user/extension/priorUsernames</path>
+					</source>
+					<expression>
+						<script>
+							<code>
+								if (!basic.isEmpty(priorUsernames)) {
+									return priorUsernames + '@oregonstate.edu';
+								}
+								else {
+									return null;
+								}
+							</code>
 						</script>
 					</expression>
 				</outbound>
@@ -214,6 +253,27 @@
 					<expression>
 						<value>logon.vbs</value>
 					</expression>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:osuPIDM</ref>
+				<outbound>
+					<!-- strong mapping is always updated for BigIntegers <strength>strong</strength> -->
+					<source>
+						<path>$user/extension/idBannerPIDM</path>
+					</source>
+<!-- 
+	 				<expression>
+						<script>
+							<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
+							<code>
+								BigInteger bi = new BigInteger(basic.stringify(idBannerPIDM));
+								return bi;
+							</code>
+						</script>
+					</expression>
+-->
 				</outbound>
 			</attribute>
 
