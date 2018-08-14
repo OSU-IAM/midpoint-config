@@ -113,7 +113,6 @@
 			<attribute>
 				<ref>ri:userPrincipalName</ref>
 				<outbound>
-					<strength>strong</strength>
 					<source>
 						<path>$user/extension/username</path>
 					</source>
@@ -128,7 +127,6 @@
 			<attribute>
 				<ref>ri:eduPersonPrincipalName</ref>
 				<outbound>
-					<strength>strong</strength>
 					<source>
 						<path>$user/extension/username</path>
 					</source>
@@ -143,7 +141,6 @@
 			<attribute>
 				<ref>ri:eduPersonPrincipalNamePrior</ref>
 				<outbound>
-					<strength>strong</strength>
 					<source>
 						<path>$user/extension/priorUsernames</path>
 					</source>

@@ -137,7 +137,6 @@
 						<maxOccurs>1</maxOccurs>
 					</limitations>
 					<outbound>
-						<strength>strong</strength>
 						<source>
 							<path>$user/extension/username</path>
 						</source>
@@ -150,26 +149,9 @@
 						<maxOccurs>1</maxOccurs>
 					</limitations>
 					<outbound>
-						<strength>strong</strength>
-						<source>
-							<path>$user/familyName</path>
-						</source>
-						<source>
-							<path>$user/givenName</path>
-						</source>
-						<source>
-							<path>$user/additionalName</path>
-						</source>
+						<strength>weak</strength>
 						<expression>
-							<script>
-								<code>
-									tmpname = familyName + ', ' + givenName;
-									if (additionalName) {
-										tmpname = tmpname + ' ' + additionalName;
-									}
-									tmpname;
-								</code>
-							</script>
+							<value>Waiting for update</value>
 						</expression>
 					</outbound>
 				</attribute>
@@ -180,23 +162,10 @@
 						<maxOccurs>1</maxOccurs>
 					</limitations>
 					<outbound>
-						<strength>strong</strength>
-						<source>
-							<path>$user/familyName</path>
-						</source>
-					</outbound>
-				</attribute>
-
-				<attribute>
-					<ref>ri:givenName</ref>
-					<limitations>
-						<maxOccurs>1</maxOccurs>
-					</limitations>
-					<outbound>
-						<strength>strong</strength>
-						<source>
-							<path>$user/givenName</path>
-						</source>
+						<strength>weak</strength>
+						<expression>
+							<value>Waiting for update</value>
+						</expression>
 					</outbound>
 				</attribute>
 
@@ -320,7 +289,6 @@
 				<attribute>
 					<ref>ri:eduPersonPrincipalName</ref>
 					<outbound>
-						<strength>strong</strength>
 						<source>
 							<path>$user/extension/username</path>
 						</source>
@@ -335,7 +303,6 @@
 				<attribute>
 					<ref>ri:eduPersonPrincipalNamePrior</ref>
 					<outbound>
-						<strength>strong</strength>
 						<source>
 							<path>$user/extension/priorUsernames</path>
 						</source>
