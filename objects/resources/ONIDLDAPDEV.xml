@@ -267,9 +267,50 @@
 						<source>
 							<path>$user/extension/username</path>
 						</source>
+						<source>
+							<path>$user/extension/osuPrimaryAffiliation</path>
+						</source>
 						<expression>
 							<script>
-								<code>username + '@oregonstate.edu'</code>
+								<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
+								<code>
+									if (!basic.isEmpty(osuPrimaryAffiliation) &amp;&amp; basic.stringify(osuPrimaryAffiliation) == 'R') {
+										return username + '@retiree.oregonstate.edu';
+									}
+									else {
+										return username + '@oregonstate.edu';
+									}
+								</code>
+							</script>
+						</expression>
+					</outbound>
+				</attribute>
+
+				<attribute>
+					<ref>ri:osuMail</ref>
+					<outbound>
+						<strength>weak</strength>
+						<source>
+							<path>$user/extension/username</path>
+						</source>
+						<source>
+							<path>$user/extension/osuPrimaryAffiliation</path>
+						</source>
+						<expression>
+							<script>
+								<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
+								<code>
+									def myList = [];
+									myList.add(username + '@oregonstate.edu');
+									if (!basic.isEmpty(osuPrimaryAffiliation) &amp;&amp; basic.stringify(osuPrimaryAffiliation) == 'R') {
+										myList.add(username + '@retiree.oregonstate.edu');
+									}
+									else {
+										myList.add(username + '@onid.oregonstate.edu');
+										myList.add(username + '@onid.orst.edu');
+									}
+									return myList;
+								</code>
 							</script>
 						</expression>
 					</outbound>

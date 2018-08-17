@@ -35,6 +35,8 @@
 			<icfcldap:pagingBlockSize>20</icfcldap:pagingBlockSize>
 			<icfcldap:operationalAttributes>legacyExchangeDN</icfcldap:operationalAttributes>
 			<icfcldap:operationalAttributes>msExchHideFromAddressLists</icfcldap:operationalAttributes>
+			<icfcldap:operationalAttributes>mailNickname</icfcldap:operationalAttributes>
+			<icfcldap:operationalAttributes>targetAddress</icfcldap:operationalAttributes>
 			<icfcldap:rawUserAccountControlAttribute>true</icfcldap:rawUserAccountControlAttribute>
 		</icfs:configurationProperties>
 
@@ -256,23 +258,121 @@
 			<attribute>
 				<ref>ri:osuPIDM</ref>
 				<outbound>
-					<!-- strong mapping is always updated for BigIntegers <strength>strong</strength> -->
 					<source>
 						<path>$user/extension/idBannerPIDM</path>
 					</source>
-<!-- 
-	 				<expression>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:proxyAddresses</ref>
+				<outbound>
+					<strength>weak</strength>
+					<source>
+						<path>$user/extension/username</path>
+					</source>
+					<source>
+						<path>$user/extension/osuPrimaryAffiliation</path>
+					</source>
+					<expression>
 						<script>
 							<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
 							<code>
-								BigInteger bi = new BigInteger(basic.stringify(idBannerPIDM));
-								return bi;
+								def myList = [];
+								retiree = (!basic.isEmpty(osuPrimaryAffiliation) &amp;&amp; basic.stringify(osuPrimaryAffiliation) == 'R');
+								if (! retiree) {
+									myList.add('SMTP:' + username + '@oregonstate.edu');
+									myList.add('smtp:' + username + '@onid.oregonstate.edu');
+									myList.add('smtp:' + username + '@onid.orst.edu');
+								}
+								return myList;
 							</code>
 						</script>
 					</expression>
--->
 				</outbound>
 			</attribute>
+
+			<attribute>
+				<ref>ri:mail</ref>
+				<outbound>
+					<strength>weak</strength>
+					<source>
+						<path>$user/extension/username</path>
+					</source>
+					<source>
+						<path>$user/extension/osuPrimaryAffiliation</path>
+					</source>
+					<expression>
+						<script>
+							<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
+							<code>
+								retiree = (!basic.isEmpty(osuPrimaryAffiliation) &amp;&amp; basic.stringify(osuPrimaryAffiliation) == 'R');
+								if (retiree) {
+									return '';
+								}
+								else {
+									return username + '@oregonstate.edu';
+								}
+							</code>
+						</script>
+					</expression>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:mailNickname</ref>
+				<outbound>
+					<strength>weak</strength>
+					<source>
+						<path>$user/extension/username</path>
+					</source>
+					<source>
+						<path>$user/extension/osuPrimaryAffiliation</path>
+					</source>
+					<expression>
+						<script>
+							<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
+							<code>
+								retiree = (!basic.isEmpty(osuPrimaryAffiliation) &amp;&amp; basic.stringify(osuPrimaryAffiliation) == 'R');
+								if (retiree) {
+									return '';
+								}
+								else {
+									return username;
+								}
+							</code>
+						</script>
+					</expression>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:targetAddress</ref>
+				<outbound>
+					<strength>weak</strength>
+					<source>
+						<path>$user/extension/username</path>
+					</source>
+					<source>
+						<path>$user/extension/osuPrimaryAffiliation</path>
+					</source>
+					<expression>
+						<script>
+							<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
+							<code>
+								retiree = (!basic.isEmpty(osuPrimaryAffiliation) &amp;&amp; basic.stringify(osuPrimaryAffiliation) == 'R');
+								if (retiree) {
+									return '';
+								}
+								else {
+									return 'SMTP:' + username + '@onid.oregonstate.edu';
+								}
+							</code>
+						</script>
+					</expression>
+				</outbound>
+			</attribute>
+
 
 			<!-- These 3 attributes are defined as mandatory in the 'top' objectclass, but they aren't really -->
 			<attribute>
