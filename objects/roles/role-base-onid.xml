@@ -20,4 +20,12 @@
 		</construction>
 	</inducement>
 	
+	<inducement id="2">
+		<construction>
+			<!-- This is the ADDEV resource -->
+			<resourceRef oid="724ba798-90cd-4c5a-bdf7-2ea7f1f6de3b" relation="org:default" type="c:ResourceType"/>
+			<kind>account</kind>
+		</construction>
+	</inducement>
+	
 </role>
