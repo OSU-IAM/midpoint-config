@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
-<!-- (c) 2011-2017 Evolveum, All rights reserved -->
-
 <xsd:schema elementFormDefault="qualified"
   targetNamespace="http://example.com/midpoint"
   xmlns:tns="http://example.com/midpoint"
@@ -43,6 +41,15 @@ All prior usernames
             <a:indexed>true</a:indexed>
             <a:displayName>Birth Date</a:displayName>
             <a:displayOrder>42</a:displayOrder>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="osuPrimaryAffiliation" type="xsd:string" minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <a:indexed>true</a:indexed>
+            <a:displayName>OSU Primary Affiliation</a:displayName>
+            <a:displayOrder>43</a:displayOrder>
           </xsd:appinfo>
         </xsd:annotation>
       </xsd:element>
