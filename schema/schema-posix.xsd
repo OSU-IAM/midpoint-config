@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 
-<!-- (c) 2011-2017 Evolveum, All rights reserved -->
-
 <xsd:schema elementFormDefault="qualified"
   targetNamespace="http://example.com/midpoint"
   xmlns:tns="http://example.com/midpoint"
@@ -21,7 +19,7 @@
           <xsd:appinfo>
             <a:indexed>true</a:indexed>
             <a:displayName>posix UID Number</a:displayName>
-            <a:displayOrder>50</a:displayOrder>
+            <a:displayOrder>60</a:displayOrder>
           </xsd:appinfo>
         </xsd:annotation>
       </xsd:element>
@@ -30,7 +28,7 @@
           <xsd:appinfo>
             <a:indexed>false</a:indexed>
             <a:displayName>posix GID Number</a:displayName>
-            <a:displayOrder>51</a:displayOrder>
+            <a:displayOrder>61</a:displayOrder>
           </xsd:appinfo>
         </xsd:annotation>
       </xsd:element>
@@ -39,7 +37,7 @@
           <xsd:appinfo>
             <a:indexed>false</a:indexed>
             <a:displayName>posix Home Directory</a:displayName>
-            <a:displayOrder>52</a:displayOrder>
+            <a:displayOrder>62</a:displayOrder>
           </xsd:appinfo>
         </xsd:annotation>
       </xsd:element>
