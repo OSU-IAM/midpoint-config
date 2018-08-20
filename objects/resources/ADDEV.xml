@@ -442,13 +442,6 @@
 					<handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#link</handlerUri>
 				</action>
 			</reaction>
-			<reaction>
-				<situation>unmatched</situation>
-				<synchronize>true</synchronize>
-				<action>
-					<handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#deleteShadow</handlerUri>
-				</action>
-			</reaction>
 		</objectSynchronization>
 	</synchronization>
 
