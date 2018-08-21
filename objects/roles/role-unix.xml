@@ -18,6 +18,7 @@
 			<resourceRef oid="ef2bc95b-76e0-48e2-86d6-3d4f02d3e1aa" relation="org:default" type="c:ResourceType"/>
 			<kind>account</kind>
 			<auxiliaryObjectClass>ri:posixAccount</auxiliaryObjectClass>
+			<auxiliaryObjectClass>ri:shadowAccount</auxiliaryObjectClass>
 
 			<attribute>
 				<ref>ri:uidNumber</ref>
