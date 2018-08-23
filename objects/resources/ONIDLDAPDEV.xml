@@ -90,9 +90,6 @@
 			<objectClass>ri:inetOrgPerson</objectClass>
 			<auxiliaryObjectClass>ri:osuPerson</auxiliaryObjectClass>
 			<auxiliaryObjectClass>ri:eduPerson</auxiliaryObjectClass>
-			<!-- <auxiliaryObjectClass>ri:posixAccount</auxiliaryObjectClass> -->
-			<!-- <auxiliaryObjectClass>ri:account</auxiliaryObjectClass> -->
-			<!-- <auxiliaryObjectClass>ri:shadowAccount</auxiliaryObjectClass> -->
 			<auxiliaryObjectClass>ri:lpSghePerson</auxiliaryObjectClass>
 
 
