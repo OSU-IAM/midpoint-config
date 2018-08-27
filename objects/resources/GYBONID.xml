@@ -1067,6 +1067,9 @@
             </xsd:schema>
          </definition>
       </schema>
+	<projection>
+        <assignmentPolicyEnforcement>none</assignmentPolicyEnforcement>
+    </projection>
       <schemaHandling>
          <objectType id="6">
             <kind>account</kind>
@@ -1186,6 +1189,19 @@
 				<target>
 					<path>$user/extension/birthdate</path>
 				</target>
+               </inbound>
+            </attribute>
+            <attribute>
+               <ref>ri:GYBONID_PRIMARY_AFFILIATION</ref>
+				<limitations>
+					<access>
+						<read>true</read>
+					</access>
+				</limitations>
+               <inbound>
+                  <target>
+                     <path>$user/extension/osuPrimaryAffiliation</path>
+                  </target>
                </inbound>
             </attribute>
             <attribute>
