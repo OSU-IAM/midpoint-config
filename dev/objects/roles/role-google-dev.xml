@@ -18,6 +18,7 @@
 			<resourceRef oid="ef2bc95b-76e0-48e2-86d6-3d4f02d3e1aa" relation="org:default" type="c:ResourceType"/>
 			<kind>account</kind>
 			<auxiliaryObjectClass>ri:googlePerson</auxiliaryObjectClass>
+
 			<attribute>
 				<ref>ri:googlePrincipalName</ref>
 				<outbound>
@@ -31,15 +32,20 @@
 					</expression>
 				</outbound>
 			</attribute>
+
+			<attribute>
+				<ref>ri:googleMailEnabled</ref>
+				<outbound>
+					<strength>weak</strength>
+					<expression>
+						<value>1</value>
+					</expression>
+				</outbound>
+			</attribute>
+
 		</construction>
 	</inducement>
 
-	<inducement id="2">
-		<construction>
-			<!-- This is the GTEST resource -->
-			<resourceRef oid="8d049132-b84c-4ee6-a26c-12ea0f7dd8fe" relation="org:default" type="c:ResourceType"/>
-			<kind>account</kind>
-		</construction>
-	</inducement>
+<!-- Until we provision Google accounts from midPoint, don't induce a resource -->
 	
 </role>
