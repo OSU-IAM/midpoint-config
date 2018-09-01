@@ -84,20 +84,22 @@
 			<auxiliaryObjectClass>ri:osuPerson</auxiliaryObjectClass>
 			<auxiliaryObjectClass>ri:eduPerson</auxiliaryObjectClass>
 			<auxiliaryObjectClass>ri:lpSghePerson</auxiliaryObjectClass>
-
+			<auxiliaryObjectClassMappings>
+				<tolerant>true</tolerant>
+			</auxiliaryObjectClassMappings>
 
 			<attribute>
 				<ref>ri:dn</ref>
 				<displayName>Distinguished Name</displayName>
-                    <limitations>
-                    	<minOccurs>0</minOccurs>
-                        <access>
-                            <read>true</read>
-                            <add>true</add>
-                            <modify>true</modify>
-                        </access>
-                    </limitations>
-                    <matchingRule>mr:distinguishedName</matchingRule>
+				<limitations>
+					<minOccurs>0</minOccurs>
+					<access>
+						<read>true</read>
+						<add>true</add>
+						<modify>true</modify>
+					</access>
+				</limitations>
+				<matchingRule>mr:distinguishedName</matchingRule>
 				<outbound>
 					<source>
 						<path>$user/name</path>
@@ -113,11 +115,11 @@
 			<attribute>
 				<ref>ri:nsUniqueId</ref>
 				<displayName>nsUniqueId</displayName>
-                    <limitations>
-                        <access>
-                            <read>true</read>
-                        </access>
-                    </limitations>
+				<limitations>
+					<access>
+						<read>true</read>
+					</access>
+				</limitations>
 			</attribute>
 
 			<attribute>
