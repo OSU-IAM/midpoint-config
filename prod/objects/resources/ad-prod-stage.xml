@@ -232,7 +232,8 @@
 					</expression>
 				</outbound>
 			</attribute>
-
+<!-- Commented out while we are importing accounts because active users don't have this attribute
+and we don't want to set it.  Needs review for later.
 			<attribute>
 				<ref>ri:msExchHideFromAddressLists</ref>
 				<outbound>
@@ -242,6 +243,7 @@
 					</expression>
 				</outbound>
 			</attribute>
+-->
 
 			<attribute>
 				<ref>ri:scriptPath</ref>
