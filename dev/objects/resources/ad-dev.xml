@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
 		xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
 		xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3"
@@ -6,9 +5,9 @@
 		xmlns:mr="http://prism.evolveum.com/xml/ns/public/matching-rule-3"
 		xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
 		xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+		xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3"
 		oid="724ba798-90cd-4c5a-bdf7-2ea7f1f6de3b" version="2">
 	<name>midPoint AD DEV</name>
-
 	<connectorRef type="ConnectorType">
 		<filter>
 			<q:and>
@@ -23,7 +22,6 @@
 			</q:and>
 		</filter>
 	</connectorRef>
-
 	<connectorConfiguration>
 		<icfs:configurationProperties xmlns:icfcldap="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-ldap/com.evolveum.polygon.connector.ldap.ad.AdLdapConnector">
 			<icfcldap:port>636</icfcldap:port>
@@ -39,8 +37,6 @@
 			<icfcldap:operationalAttributes>targetAddress</icfcldap:operationalAttributes>
 			<icfcldap:rawUserAccountControlAttribute>true</icfcldap:rawUserAccountControlAttribute>
 		</icfs:configurationProperties>
-
-		<!-- Generic ICF configuration -->
 		<icfs:connectorPoolConfiguration>
 			<icfs:minEvictableIdleTimeMillis>120000</icfs:minEvictableIdleTimeMillis>
 			<icfs:minIdle>1</icfs:minIdle>
@@ -48,22 +44,22 @@
 			<icfs:maxObjects>10</icfs:maxObjects>
 			<icfs:maxWait>150000</icfs:maxWait>
 		</icfs:connectorPoolConfiguration>
-
 		<icfs:resultsHandlerConfiguration>
 			<icfs:enableNormalizingResultsHandler>false</icfs:enableNormalizingResultsHandler>
 			<icfs:enableFilteredResultsHandler>false</icfs:enableFilteredResultsHandler>
 			<icfs:enableAttributesToGetSearchResultsHandler>false</icfs:enableAttributesToGetSearchResultsHandler>
 		</icfs:resultsHandlerConfiguration>
-
 	</connectorConfiguration>
+
+	<projection>
+		<assignmentPolicyEnforcement>none</assignmentPolicyEnforcement>
+	</projection>
 
 	<schema>
  		<generationConstraints>
 			<generateObjectClass>ri:user</generateObjectClass>
-			<!-- auxiliaryClass objectclasses for user objectclass -->
 			<generateObjectClass>ri:eduPerson</generateObjectClass>
 			<generateObjectClass>ri:osuPerson</generateObjectClass>
-
 		</generationConstraints>
 	</schema>
 
@@ -163,27 +159,31 @@
 
 			<attribute>
 				<ref>ri:sn</ref>
-				<limitations>
-					<maxOccurs>1</maxOccurs>
-				</limitations>
 				<outbound>
-					<strength>strong</strength>
-					<source>
-						<path>$user/familyName</path>
-					</source>
+					<strength>weak</strength>
+					<expression>
+						<value>Waiting for update</value>
+					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
 			<attribute>
 				<ref>ri:givenName</ref>
-				<limitations>
-					<maxOccurs>1</maxOccurs>
-				</limitations>
 				<outbound>
-					<strength>strong</strength>
-					<source>
-						<path>$user/givenName</path>
-					</source>
+					<strength>weak</strength>
+					<expression>
+						<value>Waiting for update</value>
+					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -197,6 +197,11 @@
 					<expression>
 						<value>Waiting for update</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -232,6 +237,11 @@
 							<code>'/O=Oregon State University/OU=Information Services/cn=ONID/cn=' + username</code>
 						</script>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -242,6 +252,11 @@
 					<expression>
 						<value>true</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -289,6 +304,11 @@
 							</code>
 						</script>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -316,6 +336,11 @@
 							</code>
 						</script>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -343,6 +368,11 @@
 							</code>
 						</script>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -370,6 +400,11 @@
 							</code>
 						</script>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -404,6 +439,20 @@
 		</objectType>
 	</schemaHandling>
 
+	<capabilities>
+		<configured>
+			<cap:create>
+				<cap:enabled>false</cap:enabled>
+			</cap:create>
+			<cap:update>
+				<cap:enabled>false</cap:enabled>
+			</cap:update>
+			<cap:delete>
+				<cap:enabled>false</cap:enabled>
+			</cap:delete>
+		</configured>
+	</capabilities>
+
 	<synchronization>
 		<objectSynchronization>
 			<name>Account sync policy</name>
@@ -422,7 +471,7 @@
 			</correlation>
 
 			<!-- Confirmation rule may be here, but as the search above will
-	                always return at most one match, the confirmation rule is not needed. -->
+			always return at most one match, the confirmation rule is not needed. -->
 
 			<reaction>
 				<situation>linked</situation>
@@ -444,5 +493,4 @@
 			</reaction>
 		</objectSynchronization>
 	</synchronization>
-
 </resource>
