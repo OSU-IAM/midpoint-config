@@ -144,6 +144,11 @@
 					<expression>
 						<value>Waiting for update</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -157,6 +162,11 @@
 					<expression>
 						<value>Waiting for update</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -248,6 +258,11 @@
 					<expression>
 						<value>unknown</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -314,6 +329,11 @@
 					<expression>
 						<value>cn=onidrole,o=orst.edu</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
