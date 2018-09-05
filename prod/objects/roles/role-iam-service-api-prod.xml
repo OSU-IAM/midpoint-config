@@ -1,102 +1,131 @@
-<role xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-		xmlns:apti="http://midpoint.evolveum.com/xml/ns/public/common/api-types-3"
-		xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-		xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
-		xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
-		xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
-		xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
-		xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-		>
-	<name>IAM Service API</name>
-	<description>Allows service access to midPoint API</description>
+<role oid="70884601-6ac8-4103-8359-e0014281d877"
+    xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+    xmlns:apti="http://midpoint.evolveum.com/xml/ns/public/common/api-types-3"
+    xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+    xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
+    xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+    xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+    xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+    xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    version="0">
+    <name>IAM Service API</name>
+    <description>Allows service access to midPoint API</description>
 
-	<authorization>
-		<action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-rest-3#all</action>
-	</authorization>
+    <authorization>
+        <action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-rest-3#all</action>
+    </authorization>
 
-	<authorization>
-		<action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#read</action>
-		<phase>request</phase>
-		<object>
-			<type>UserType</type>
-		</object>
-		<object>
-			<type>RoleType</type>
-		</object>
-	</authorization>
+    <authorization>
+        <action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#read</action>
+        <phase>request</phase>
+        <object>
+            <type>UserType</type>
+        </object>
+        <object>
+            <type>RoleType</type>
+        </object>
+        <object>
+            <type>TaskType</type>
+        </object>
+    </authorization>
 
-	<authorization>
-		<action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#read</action>
-		<phase>execution</phase>
-		<object>
-			<type>UserType</type>
-		</object>
-		<object>
-			<type>RoleType</type>
-		</object>
-	</authorization>
+    <authorization>
+        <action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#read</action>
+        <phase>execution</phase>
+        <object>
+            <type>UserType</type>
+        </object>
+        <object>
+            <type>RoleType</type>
+        </object>
+        <object>
+            <type>TaskType</type>
+        </object>
+    </authorization>
 
-	<authorization>
-		<action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#modify</action>
-		<phase>request</phase>
-		<object>
-			<type>UserType</type>
-		</object>
-	</authorization>
+    <authorization>
+        <action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#modify</action>
+        <phase>request</phase>
+        <object>
+            <type>UserType</type>
+        </object>
+        <object>
+            <type>TaskType</type>
+        </object>
+    </authorization>
 
-	<authorization>
-		<action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#modify</action>
-		<phase>execution</phase>
-		<object>
-			<type>UserType</type>
-		</object>
-	</authorization>
+    <authorization>
+        <action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#modify</action>
+        <phase>execution</phase>
+        <object>
+            <type>UserType</type>
+        </object>
+        <object>
+            <type>TaskType</type>
+        </object>
+    </authorization>
 
-	<authorization>
-		<action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#add</action>
-		<action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#modify</action>
-		<action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#delete</action>
-		<phase>execution</phase>
-		<object>
-			<type>ShadowType</type>
-		</object>
-	</authorization>
+    <authorization>
+        <action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#add</action>
+        <action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#modify</action>
+        <action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#delete</action>
+        <phase>execution</phase>
+        <object>
+            <type>ShadowType</type>
+        </object>
+    </authorization>
 
-	<!-- allow assignment of Base ONID role -->
-	<authorization>
-		<action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#assign</action>
-		<phase>request</phase>
-		<object>
-			<type>UserType</type>
-		</object>
-		<target>
-			<type>RoleType</type>
-			<!-- <filter>
-				<q:equal>
-					<q:path>name</q:path>
-					<q:value>Base ONID</q:value>
-				</q:equal>
-			</filter> -->
-		</target>
-	</authorization>
+    <!-- allow assignment of roles -->
+    <authorization>
+        <action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#assign</action>
+        <phase>request</phase>
+        <object>
+            <type>UserType</type>
+        </object>
+        <target>
+            <type>RoleType</type>
+            <!-- <filter>
+                <q:equal>
+                    <q:path>name</q:path>
+                    <q:value>Base ONID</q:value>
+                </q:equal>
+            </filter> -->
+        </target>
+    </authorization>
 
-	<!-- allow un-assignment of Base ONID role -->
-	<authorization>
-		<action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#unassign</action>
-		<phase>request</phase>
-		<object>
-			<type>UserType</type>
-		</object>
-		<target>
-			<type>RoleType</type>
-			<!-- <filter>
-				<q:equal>
-					<q:path>name</q:path>
-					<q:value>Base ONID</q:value>
-				</q:equal>
-			</filter> -->
-		</target>
-	</authorization>
+    <!-- allow un-assignment of roles -->
+    <authorization>
+        <action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#unassign</action>
+        <phase>request</phase>
+        <object>
+            <type>UserType</type>
+        </object>
+        <target>
+            <type>RoleType</type>
+            <!-- <filter>
+                <q:equal>
+                    <q:path>name</q:path>
+                    <q:value>Base ONID</q:value>
+                </q:equal>
+            </filter> -->
+        </target>
+    </authorization>
 
+    <!-- allow resuming of tasks -->
+    <authorization>
+        <action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#resumeTask</action>
+        <phase>request</phase>
+        <object>
+            <type>TaskType</type>
+        </object>
+    </authorization>
+
+    <authorization>
+        <action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#resumeTask</action>
+        <phase>execution</phase>
+        <object>
+            <type>TaskType</type>
+        </object>
+    </authorization>
 </role>
