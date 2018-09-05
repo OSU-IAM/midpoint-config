@@ -1,18 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-	xmlns:t='http://prism.evolveum.com/xml/ns/public/types-3'
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
-	xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3"
-	xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
-	xmlns:mr="http://prism.evolveum.com/xml/ns/public/matching-rule-3"
-	xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3"
-	oid="ef2bc95b-76e0-48e2-86d6-3d4f02d3e1aa">
-
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+		xmlns:t='http://prism.evolveum.com/xml/ns/public/types-3'
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+		xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3"
+		xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+		xmlns:mr="http://prism.evolveum.com/xml/ns/public/matching-rule-3"
+		xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3"
+		oid="ef2bc95b-76e0-48e2-86d6-3d4f02d3e1aa">
 	<name>ONID LDAP DEV</name>
-
 	<connectorRef type="ConnectorType">
 		<filter>
 			<q:and>
@@ -27,10 +24,7 @@
 			</q:and>
 		</filter>
 	</connectorRef>
-
 	<connectorConfiguration xmlns:icfcldap="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-ldap/com.evolveum.polygon.connector.ldap.LdapConnector">
-
-		<!-- Configuration specific for the LDAP connector -->
 		<icfs:configurationProperties>
 			<icfcldap:port>636</icfcldap:port>
 			<icfcldap:host><expression><const>resourceONIDLDAPhost</const></expression></icfcldap:host>
@@ -46,8 +40,6 @@
 			<icfcldap:operationalAttributes>nsRole</icfcldap:operationalAttributes>
 			<icfcldap:operationalAttributes>nsRoleDN</icfcldap:operationalAttributes>
 		</icfs:configurationProperties>
-
-		<!-- Generic ICF configuration -->
 		<icfs:connectorPoolConfiguration>
 			<icfs:minEvictableIdleTimeMillis>120000</icfs:minEvictableIdleTimeMillis>
 			<icfs:minIdle>1</icfs:minIdle>
@@ -55,16 +47,18 @@
 			<icfs:maxObjects>10</icfs:maxObjects>
 			<icfs:maxWait>150000</icfs:maxWait>
 		</icfs:connectorPoolConfiguration>
-
 		<icfs:producerBufferSize>100</icfs:producerBufferSize>
-
 		<icfs:resultsHandlerConfiguration>
 			<icfs:enableNormalizingResultsHandler>false</icfs:enableNormalizingResultsHandler>
 			<icfs:enableFilteredResultsHandler>false</icfs:enableFilteredResultsHandler>
 			<icfs:enableAttributesToGetSearchResultsHandler>false</icfs:enableAttributesToGetSearchResultsHandler>
 		</icfs:resultsHandlerConfiguration>
-
 	</connectorConfiguration>
+
+
+	<projection>
+		<assignmentPolicyEnforcement>none</assignmentPolicyEnforcement>
+	</projection>
 
 	<schema>
 		<generationConstraints>
@@ -77,7 +71,6 @@
 			<generateObjectClass>ri:lpSghePerson</generateObjectClass>
 			<generateObjectClass>ri:googlePerson</generateObjectClass>
 			<generateObjectClass>ri:posixAccount</generateObjectClass>
-			<generateObjectClass>ri:account</generateObjectClass>
 			<generateObjectClass>ri:shadowAccount</generateObjectClass>
 			<generateObjectClass>ri:nsNestedRoleDefinition</generateObjectClass>
 		</generationConstraints>
@@ -91,20 +84,22 @@
 			<auxiliaryObjectClass>ri:osuPerson</auxiliaryObjectClass>
 			<auxiliaryObjectClass>ri:eduPerson</auxiliaryObjectClass>
 			<auxiliaryObjectClass>ri:lpSghePerson</auxiliaryObjectClass>
-
+			<auxiliaryObjectClassMappings>
+				<tolerant>true</tolerant>
+			</auxiliaryObjectClassMappings>
 
 			<attribute>
 				<ref>ri:dn</ref>
 				<displayName>Distinguished Name</displayName>
-                    <limitations>
-                    	<minOccurs>0</minOccurs>
-                        <access>
-                            <read>true</read>
-                            <add>true</add>
-                            <modify>true</modify>
-                        </access>
-                    </limitations>
-                    <matchingRule>mr:distinguishedName</matchingRule>
+				<limitations>
+					<minOccurs>0</minOccurs>
+					<access>
+						<read>true</read>
+						<add>true</add>
+						<modify>true</modify>
+					</access>
+				</limitations>
+				<matchingRule>mr:distinguishedName</matchingRule>
 				<outbound>
 					<source>
 						<path>$user/name</path>
@@ -120,11 +115,11 @@
 			<attribute>
 				<ref>ri:nsUniqueId</ref>
 				<displayName>nsUniqueId</displayName>
-                    <limitations>
-                        <access>
-                            <read>true</read>
-                        </access>
-                    </limitations>
+				<limitations>
+					<access>
+						<read>true</read>
+					</access>
+				</limitations>
 			</attribute>
 
 			<attribute>
@@ -368,30 +363,20 @@
 				</outbound>
 			</attribute>
 
-			<!-- Disabling this feature for now
-			<activation>
-				<administrativeStatus>
-					<outbound>
-						<strength>weak</strength>
-					</outbound>
-				</administrativeStatus>
-			</activation>
-			-->
-
 		</objectType>
 	</schemaHandling>
 
 	<capabilities>
 		<configured>
-			<!-- Disabling this feature for now
-			<cap:activation>
-				<cap:status>
-					<cap:attribute>ri:nsAccountLock</cap:attribute>
-					<cap:enableValue/>
-					<cap:disableValue>true</cap:disableValue>
-				</cap:status>
-			</cap:activation>
-			-->
+			<cap:create>
+				<cap:enabled>false</cap:enabled>
+			</cap:create>
+			<cap:update>
+				<cap:enabled>false</cap:enabled>
+			</cap:update>
+			<cap:delete>
+				<cap:enabled>false</cap:enabled>
+			</cap:delete>
 		</configured>
 	</capabilities>
 
