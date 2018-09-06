@@ -6,7 +6,7 @@
 		xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
 		xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
 		xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3"
-		oid="724ba798-90cd-4c5a-bdf7-2ea7f1f6de3b" version="2">
+		oid="724ba798-90cd-4c5a-bdf7-2ea7f1f6de3b">
 	<name>midPoint AD DEV</name>
 	<connectorRef type="ConnectorType">
 		<filter>
@@ -89,9 +89,6 @@
 
 			<attribute>
 				<ref>ri:cn</ref>
-				<limitations>
-					<minOccurs>0</minOccurs>
-				</limitations>
 				<outbound>
 					<source>
 						<path>$user/extension/username</path>
@@ -209,6 +206,11 @@
 					<expression>
 						<value>514</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -219,6 +221,11 @@
 					<expression>
 						<value>ONID User</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -264,6 +271,11 @@
 					<expression>
 						<value>logon.vbs</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
