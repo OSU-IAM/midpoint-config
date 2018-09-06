@@ -6,8 +6,7 @@
 		xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
 		xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
 		xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3"
-		oid="5c5082d0-361f-4e33-8d1a-31b562868f5e"
-		>
+		oid="5c5082d0-361f-4e33-8d1a-31b562868f5e">
 	<name>AD</name>
 	<connectorRef type="ConnectorType">
 		<filter>
@@ -28,7 +27,7 @@
 			<icfcldap:port>636</icfcldap:port>
 			<icfcldap:host><expression><const>resourceONIDADhost</const></expression></icfcldap:host>
 			<icfcldap:connectionSecurity>ssl</icfcldap:connectionSecurity>
-			<icfcldap:baseContext><expression><const>resourceONIDADuserOU</const></expression></icfcldap:baseContext>
+			<icfcldap:baseContext><expression><const>resourceONIDADbasedn</const></expression></icfcldap:baseContext>
 			<icfcldap:bindDn><expression><const>resourceONIDADuser</const></expression></icfcldap:bindDn>
 			<icfcldap:bindPassword><expression><const>resourceONIDADpassword</const></expression></icfcldap:bindPassword>
 			<icfcldap:pagingBlockSize>20</icfcldap:pagingBlockSize>
@@ -51,7 +50,6 @@
 			<icfs:enableAttributesToGetSearchResultsHandler>false</icfs:enableAttributesToGetSearchResultsHandler>
 		</icfs:resultsHandlerConfiguration>
 	</connectorConfiguration>
-
 
 	<projection>
 		<assignmentPolicyEnforcement>none</assignmentPolicyEnforcement>
@@ -91,9 +89,6 @@
 
 			<attribute>
 				<ref>ri:cn</ref>
-				<limitations>
-					<minOccurs>0</minOccurs>
-				</limitations>
 				<outbound>
 					<source>
 						<path>$user/extension/username</path>
@@ -161,40 +156,46 @@
 
 			<attribute>
 				<ref>ri:sn</ref>
-				<limitations>
-					<maxOccurs>1</maxOccurs>
-				</limitations>
-				<outbound>
-					<strength>strong</strength>
-					<source>
-						<path>$user/familyName</path>
-					</source>
-				</outbound>
-			</attribute>
-
-			<attribute>
-				<ref>ri:givenName</ref>
-				<limitations>
-					<maxOccurs>1</maxOccurs>
-				</limitations>
-				<outbound>
-					<strength>strong</strength>
-					<source>
-						<path>$user/givenName</path>
-					</source>
-				</outbound>
-			</attribute>
-
-			<attribute>
-				<ref>ri:displayName</ref>
-				<limitations>
-					<maxOccurs>1</maxOccurs>
-				</limitations>
 				<outbound>
 					<strength>weak</strength>
 					<expression>
 						<value>Waiting for update</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:givenName</ref>
+				<outbound>
+					<strength>weak</strength>
+					<expression>
+						<value>Waiting for update</value>
+					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:displayName</ref>
+				<outbound>
+					<strength>weak</strength>
+					<expression>
+						<value>Waiting for update</value>
+					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -205,6 +206,11 @@
 					<expression>
 						<value>514</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -215,6 +221,11 @@
 					<expression>
 						<value>ONID User</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -230,10 +241,14 @@
 							<code>'/O=Oregon State University/OU=Information Services/cn=ONID/cn=' + username</code>
 						</script>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
-<!-- Commented out while we are importing accounts because active users don't have this attribute
-and we don't want to set it.  Needs review for later.
+
 			<attribute>
 				<ref>ri:msExchHideFromAddressLists</ref>
 				<outbound>
@@ -241,9 +256,13 @@ and we don't want to set it.  Needs review for later.
 					<expression>
 						<value>true</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
--->
 
 			<attribute>
 				<ref>ri:scriptPath</ref>
@@ -252,6 +271,11 @@ and we don't want to set it.  Needs review for later.
 					<expression>
 						<value>logon.vbs</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -289,6 +313,11 @@ and we don't want to set it.  Needs review for later.
 							</code>
 						</script>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -316,6 +345,11 @@ and we don't want to set it.  Needs review for later.
 							</code>
 						</script>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -343,6 +377,11 @@ and we don't want to set it.  Needs review for later.
 							</code>
 						</script>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -370,6 +409,11 @@ and we don't want to set it.  Needs review for later.
 							</code>
 						</script>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
