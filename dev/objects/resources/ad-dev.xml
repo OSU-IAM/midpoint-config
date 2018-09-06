@@ -27,7 +27,7 @@
 			<icfcldap:port>636</icfcldap:port>
 			<icfcldap:host><expression><const>resourceONIDADhost</const></expression></icfcldap:host>
 			<icfcldap:connectionSecurity>ssl</icfcldap:connectionSecurity>
-			<icfcldap:baseContext><expression><const>resourceONIDADuserOU</const></expression></icfcldap:baseContext>
+			<icfcldap:baseContext><expression><const>resourceONIDADbasedn</const></expression></icfcldap:baseContext>
 			<icfcldap:bindDn><expression><const>resourceONIDADuser</const></expression></icfcldap:bindDn>
 			<icfcldap:bindPassword><expression><const>resourceONIDADpassword</const></expression></icfcldap:bindPassword>
 			<icfcldap:pagingBlockSize>20</icfcldap:pagingBlockSize>
