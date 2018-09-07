@@ -55,7 +55,6 @@
 		</icfs:resultsHandlerConfiguration>
 	</connectorConfiguration>
 
-
 	<projection>
 		<assignmentPolicyEnforcement>none</assignmentPolicyEnforcement>
 	</projection>
@@ -91,14 +90,6 @@
 			<attribute>
 				<ref>ri:dn</ref>
 				<displayName>Distinguished Name</displayName>
-				<limitations>
-					<minOccurs>0</minOccurs>
-					<access>
-						<read>true</read>
-						<add>true</add>
-						<modify>true</modify>
-					</access>
-				</limitations>
 				<matchingRule>mr:distinguishedName</matchingRule>
 				<outbound>
 					<source>
@@ -144,6 +135,11 @@
 					<expression>
 						<value>Waiting for update</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -157,29 +153,34 @@
 					<expression>
 						<value>Waiting for update</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
 			<attribute>
 				<ref>ri:osuBirthdate</ref>
-				<outbound>
-					<strength>strong</strength>
-					<source>
-						<path>$user/extension/birthdate</path>
-					</source>
-					<expression>
-						<script>
-							<code>
-								tmpdate = basic.formatDateTime("yyyyMMdd", birthdate)
-							</code>
-						</script>
-					</expression>
-					<condition>
-						<script>
-							<code>!basic.isEmpty(birthdate)</code>
-						</script>
-					</condition>
-				</outbound>
+<!-- 				<outbound> -->
+<!-- 					<strength>strong</strength> -->
+<!-- 					<source> -->
+<!-- 						<path>$user/extension/birthdate</path> -->
+<!-- 					</source> -->
+<!-- 					<expression> -->
+<!-- 						<script> -->
+<!-- 							<code> -->
+<!-- 								tmpdate = basic.formatDateTime("yyyyMMdd", birthdate) -->
+<!-- 							</code> -->
+<!-- 						</script> -->
+<!-- 					</expression> -->
+<!-- 					<condition> -->
+<!-- 						<script> -->
+<!-- 							<code>!basic.isEmpty(birthdate)</code> -->
+<!-- 						</script> -->
+<!-- 					</condition> -->
+<!-- 				</outbound> -->
 			</attribute>
 
 			<attribute>
@@ -244,10 +245,14 @@
 					<maxOccurs>1</maxOccurs>
 				</limitations>
 				<outbound>
-					<strength>weak</strength>
 					<expression>
 						<value>unknown</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -274,6 +279,11 @@
 							</code>
 						</script>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -304,6 +314,11 @@
 							</code>
 						</script>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -314,6 +329,11 @@
 					<expression>
 						<value>cn=onidrole,o=orst.edu</value>
 					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
 				</outbound>
 			</attribute>
 
@@ -356,11 +376,11 @@
 
 			<attribute>
 				<ref>ri:udcid</ref>
-				<outbound>
-					<source>
-						<path>$user/extension/idBannerUDCID</path>
-					</source>
-				</outbound>
+<!-- 				<outbound> -->
+<!-- 					<source> -->
+<!-- 						<path>$user/extension/idBannerUDCID</path> -->
+<!-- 					</source> -->
+<!-- 				</outbound> -->
 			</attribute>
 
 		</objectType>
