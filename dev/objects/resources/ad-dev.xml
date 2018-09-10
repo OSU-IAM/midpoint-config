@@ -52,7 +52,7 @@
 	</connectorConfiguration>
 
 	<projection>
-		<assignmentPolicyEnforcement>none</assignmentPolicyEnforcement>
+		<assignmentPolicyEnforcement>relative</assignmentPolicyEnforcement>
 	</projection>
 
 	<schema>
@@ -447,20 +447,6 @@
 
 		</objectType>
 	</schemaHandling>
-
-	<capabilities>
-		<configured>
-			<cap:create>
-				<cap:enabled>false</cap:enabled>
-			</cap:create>
-			<cap:update>
-				<cap:enabled>false</cap:enabled>
-			</cap:update>
-			<cap:delete>
-				<cap:enabled>false</cap:enabled>
-			</cap:delete>
-		</configured>
-	</capabilities>
 
 	<synchronization>
 		<objectSynchronization>
