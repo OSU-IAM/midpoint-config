@@ -36,6 +36,7 @@
 			<icfcldap:connectTimeout>300000</icfcldap:connectTimeout>
 			<icfcldap:vlvSortAttribute>uid</icfcldap:vlvSortAttribute>
 			<icfcldap:uidAttribute>nsUniqueId</icfcldap:uidAttribute>
+			<icfcldap:modifiersNamesToFilterOut><expression><const>resourceONIDLDAPuser</const></expression></icfcldap:modifiersNamesToFilterOut>
 			<icfcldap:operationalAttributes>nsAccountLock</icfcldap:operationalAttributes>
 			<icfcldap:operationalAttributes>nsRole</icfcldap:operationalAttributes>
 			<icfcldap:operationalAttributes>nsRoleDN</icfcldap:operationalAttributes>
