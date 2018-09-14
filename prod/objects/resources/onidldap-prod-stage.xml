@@ -19,7 +19,7 @@
 				</q:equal>
 				<q:equal>
 					<q:path>c:connectorVersion</q:path>
-					<q:value>1.5.1-osu1</q:value>
+					<q:value>1.6-string1</q:value>
 				</q:equal>
 			</q:and>
 		</filter>
@@ -187,38 +187,18 @@
 			<attribute>
 				<ref>ri:osuPIDM</ref>
 				<outbound>
-					<!-- strong mapping is always updated for BigIntegers <strength>strong</strength> -->
 					<source>
 						<path>$user/extension/idBannerPIDM</path>
 					</source>
- 					<expression>
-						<script>
-							<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
-							<code>
-								BigInteger bi = new BigInteger(basic.stringify(idBannerPIDM));
-								return bi;
-							</code>
-						</script>
-					</expression>
 				</outbound>
 			</attribute>
 
 			<attribute>
 				<ref>ri:osuID</ref>
 				<outbound>
-					<!-- strong mapping is always updated for BigIntegers <strength>strong</strength> -->
 					<source>
 						<path>$user/extension/idBannerOSUID</path>
 					</source>
- 					<expression>
-						<script>
-							<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
-							<code>
-								BigInteger bi = new BigInteger(basic.stringify(idBannerOSUID));
-								return bi;
-							</code>
-						</script>
-					</expression>
 				</outbound>
 			</attribute>
 
@@ -228,15 +208,6 @@
 					<source>
 						<path>$user/name</path>
 					</source>
- 					<expression>
-						<script>
-							<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
-							<code>
-								BigInteger bi = new BigInteger(basic.stringify(user.getName()));
-								return bi;
-							</code>
-						</script>
-					</expression>
 				</outbound>
 			</attribute>
 
