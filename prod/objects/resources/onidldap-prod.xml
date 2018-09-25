@@ -1,0 +1,398 @@
+<resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+		xmlns:t='http://prism.evolveum.com/xml/ns/public/types-3'
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+		xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3"
+		xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+		xmlns:mr="http://prism.evolveum.com/xml/ns/public/matching-rule-3"
+		xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3"
+		oid="f0612174-22ea-422c-ae68-a8241bfcbc8c">
+	<name>ONID LDAP</name>
+	<connectorRef type="ConnectorType">
+		<filter>
+			<q:and>
+				<q:equal>
+					<q:path>c:connectorType</q:path>
+					<q:value>com.evolveum.polygon.connector.ldap.LdapConnector</q:value>
+				</q:equal>
+				<q:equal>
+					<q:path>c:connectorVersion</q:path>
+					<q:value>1.6-string1</q:value>
+				</q:equal>
+			</q:and>
+		</filter>
+	</connectorRef>
+	<connectorConfiguration xmlns:icfcldap="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-ldap/com.evolveum.polygon.connector.ldap.LdapConnector">
+		<icfs:configurationProperties>
+			<icfcldap:port>636</icfcldap:port>
+			<icfcldap:host><expression><const>resourceONIDLDAPhost</const></expression></icfcldap:host>
+			<icfcldap:connectionSecurity>ssl</icfcldap:connectionSecurity>
+			<icfcldap:authenticationType>simple</icfcldap:authenticationType>
+			<icfcldap:baseContext><expression><const>resourceONIDLDAPbasedn</const></expression></icfcldap:baseContext>
+			<icfcldap:bindDn><expression><const>resourceONIDLDAPuser</const></expression></icfcldap:bindDn>
+			<icfcldap:bindPassword><expression><const>resourceONIDLDAPpassword</const></expression></icfcldap:bindPassword>
+			<icfcldap:connectTimeout>300000</icfcldap:connectTimeout>
+			<icfcldap:vlvSortAttribute>uid</icfcldap:vlvSortAttribute>
+			<icfcldap:uidAttribute>nsUniqueId</icfcldap:uidAttribute>
+			<icfcldap:modifiersNamesToFilterOut><expression><const>resourceONIDLDAPuser</const></expression></icfcldap:modifiersNamesToFilterOut>
+			<icfcldap:operationalAttributes>nsAccountLock</icfcldap:operationalAttributes>
+			<icfcldap:operationalAttributes>nsRole</icfcldap:operationalAttributes>
+			<icfcldap:operationalAttributes>nsRoleDN</icfcldap:operationalAttributes>
+		</icfs:configurationProperties>
+		<icfs:connectorPoolConfiguration>
+			<icfs:minEvictableIdleTimeMillis>120000</icfs:minEvictableIdleTimeMillis>
+			<icfs:minIdle>1</icfs:minIdle>
+			<icfs:maxIdle>10</icfs:maxIdle>
+			<icfs:maxObjects>10</icfs:maxObjects>
+			<icfs:maxWait>150000</icfs:maxWait>
+		</icfs:connectorPoolConfiguration>
+		<icfs:producerBufferSize>100</icfs:producerBufferSize>
+		<icfs:resultsHandlerConfiguration>
+			<icfs:enableNormalizingResultsHandler>false</icfs:enableNormalizingResultsHandler>
+			<icfs:enableFilteredResultsHandler>false</icfs:enableFilteredResultsHandler>
+			<icfs:enableAttributesToGetSearchResultsHandler>false</icfs:enableAttributesToGetSearchResultsHandler>
+		</icfs:resultsHandlerConfiguration>
+	</connectorConfiguration>
+
+	<projection>
+		<assignmentPolicyEnforcement>relative</assignmentPolicyEnforcement>
+	</projection>
+
+	<schema>
+		<generationConstraints>
+			<generateObjectClass>ri:top</generateObjectClass>
+			<generateObjectClass>ri:person</generateObjectClass>
+			<generateObjectClass>ri:organizationalPerson</generateObjectClass>
+			<generateObjectClass>ri:inetOrgPerson</generateObjectClass>
+			<generateObjectClass>ri:osuPerson</generateObjectClass>
+			<generateObjectClass>ri:eduPerson</generateObjectClass>
+			<generateObjectClass>ri:lpSghePerson</generateObjectClass>
+			<generateObjectClass>ri:googlePerson</generateObjectClass>
+			<generateObjectClass>ri:posixAccount</generateObjectClass>
+			<generateObjectClass>ri:shadowAccount</generateObjectClass>
+			<generateObjectClass>ri:nsNestedRoleDefinition</generateObjectClass>
+		</generationConstraints>
+	</schema>
+
+	<schemaHandling>
+		<objectType>
+			<kind>account</kind>
+			<default>true</default>
+			<objectClass>ri:inetOrgPerson</objectClass>
+			<auxiliaryObjectClass>ri:osuPerson</auxiliaryObjectClass>
+			<auxiliaryObjectClass>ri:eduPerson</auxiliaryObjectClass>
+			<auxiliaryObjectClass>ri:lpSghePerson</auxiliaryObjectClass>
+
+			<attribute>
+				<ref>ri:dn</ref>
+				<displayName>Distinguished Name</displayName>
+				<matchingRule>mr:distinguishedName</matchingRule>
+				<outbound>
+					<source>
+						<path>$user/name</path>
+					</source>
+					<expression>
+						<script>
+							<code>'osuuid=' + name + ',' + midpoint.getConst('resourceONIDLDAPbasedn')</code>
+						</script>
+					</expression>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:nsUniqueId</ref>
+				<displayName>nsUniqueId</displayName>
+				<limitations>
+					<access>
+						<read>true</read>
+					</access>
+				</limitations>
+			</attribute>
+
+			<attribute>
+				<ref>ri:uid</ref>
+				<limitations>
+					<maxOccurs>1</maxOccurs>
+				</limitations>
+				<outbound>
+					<source>
+						<path>$user/extension/username</path>
+					</source>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:cn</ref>
+				<limitations>
+					<maxOccurs>1</maxOccurs>
+				</limitations>
+				<outbound>
+					<strength>weak</strength>
+					<expression>
+						<value>Waiting for update</value>
+					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:sn</ref>
+				<limitations>
+					<maxOccurs>1</maxOccurs>
+				</limitations>
+				<outbound>
+					<strength>weak</strength>
+					<expression>
+						<value>Waiting for update</value>
+					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:osuBirthdate</ref>
+<!-- 				<outbound> -->
+<!-- 					<strength>strong</strength> -->
+<!-- 					<source> -->
+<!-- 						<path>$user/extension/birthdate</path> -->
+<!-- 					</source> -->
+<!-- 					<expression> -->
+<!-- 						<script> -->
+<!-- 							<code> -->
+<!-- 								tmpdate = basic.formatDateTime("yyyyMMdd", birthdate) -->
+<!-- 							</code> -->
+<!-- 						</script> -->
+<!-- 					</expression> -->
+<!-- 					<condition> -->
+<!-- 						<script> -->
+<!-- 							<code>!basic.isEmpty(birthdate)</code> -->
+<!-- 						</script> -->
+<!-- 					</condition> -->
+<!-- 				</outbound> -->
+			</attribute>
+
+			<attribute>
+				<ref>ri:osuPIDM</ref>
+				<outbound>
+					<source>
+						<path>$user/extension/idBannerPIDM</path>
+					</source>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:osuID</ref>
+				<outbound>
+					<source>
+						<path>$user/extension/idBannerOSUID</path>
+					</source>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:osuUID</ref>
+				<outbound>
+					<source>
+						<path>$user/name</path>
+					</source>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:osuPrimaryAffiliation</ref>
+				<limitations>
+					<maxOccurs>1</maxOccurs>
+				</limitations>
+				<outbound>
+					<expression>
+						<value>unknown</value>
+					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:osuPrimaryMail</ref>
+				<outbound>
+					<strength>weak</strength>
+					<source>
+						<path>$user/extension/username</path>
+					</source>
+					<source>
+						<path>$user/extension/osuPrimaryAffiliation</path>
+					</source>
+					<expression>
+						<script>
+							<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
+							<code>
+								if (!basic.isEmpty(osuPrimaryAffiliation) &amp;&amp; basic.stringify(osuPrimaryAffiliation) == 'R') {
+									return username + '@retiree.oregonstate.edu';
+								}
+								else {
+									return username + '@oregonstate.edu';
+								}
+							</code>
+						</script>
+					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:osuMail</ref>
+				<outbound>
+					<strength>weak</strength>
+					<source>
+						<path>$user/extension/username</path>
+					</source>
+					<source>
+						<path>$user/extension/osuPrimaryAffiliation</path>
+					</source>
+					<expression>
+						<script>
+							<language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
+							<code>
+								def myList = [];
+								myList.add(username + '@oregonstate.edu');
+								if (!basic.isEmpty(osuPrimaryAffiliation) &amp;&amp; basic.stringify(osuPrimaryAffiliation) == 'R') {
+									myList.add(username + '@retiree.oregonstate.edu');
+								}
+								else {
+									myList.add(username + '@onid.oregonstate.edu');
+									myList.add(username + '@onid.orst.edu');
+								}
+								return myList;
+							</code>
+						</script>
+					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:nsRoleDN</ref>
+				<outbound>
+					<strength>weak</strength>
+					<expression>
+						<value>cn=onidrole,o=orst.edu</value>
+					</expression>
+					<condition>
+						<script>
+							<code>operation == 'add'</code>
+						</script>
+					</condition>
+				</outbound>
+			</attribute>
+
+
+			<attribute>
+				<ref>ri:eduPersonPrincipalName</ref>
+				<outbound>
+					<source>
+						<path>$user/extension/username</path>
+					</source>
+					<expression>
+						<script>
+							<code>username + '@oregonstate.edu'</code>
+						</script>
+					</expression>
+				</outbound>
+			</attribute>
+
+			<attribute>
+				<ref>ri:eduPersonPrincipalNamePrior</ref>
+				<outbound>
+					<source>
+						<path>$user/extension/priorUsernames</path>
+					</source>
+					<expression>
+						<script>
+							<code>
+								if (!basic.isEmpty(priorUsernames)) {
+									return priorUsernames + '@oregonstate.edu';
+								}
+								else {
+									return null;
+								}
+							</code>
+						</script>
+					</expression>
+				</outbound>
+			</attribute>
+
+
+			<attribute>
+				<ref>ri:udcid</ref>
+<!-- 				<outbound> -->
+<!-- 					<source> -->
+<!-- 						<path>$user/extension/idBannerUDCID</path> -->
+<!-- 					</source> -->
+<!-- 				</outbound> -->
+			</attribute>
+
+		</objectType>
+	</schemaHandling>
+
+	<synchronization>
+		<objectSynchronization>
+			<name>Account sync policy</name>
+			<kind>account</kind>
+			<intent>default</intent>
+			<focusType>c:UserType</focusType>
+			<enabled>true</enabled>
+
+			<correlation>
+				<q:equal>
+					<q:path>extension/username</q:path>
+					<expression>
+						<path>$shadow/attributes/ri:uid</path>
+					</expression>
+				</q:equal>
+			</correlation>
+
+			<!-- Confirmation rule may be here, but as the search above will
+			always return at most one match, the confirmation rule is not needed. -->
+
+			<reaction>
+				<situation>linked</situation>
+				<synchronize>true</synchronize>
+			</reaction>
+			<reaction>
+				<situation>deleted</situation>
+				<synchronize>true</synchronize>
+				<action>
+					<handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#unlink</handlerUri>
+				</action>
+			</reaction>
+			<reaction>
+				<situation>unlinked</situation>
+				<synchronize>true</synchronize>
+				<action>
+					<handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#link</handlerUri>
+				</action>
+			</reaction>
+		</objectSynchronization>
+	</synchronization>
+</resource>
